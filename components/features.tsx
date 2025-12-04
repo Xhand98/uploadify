@@ -1,5 +1,9 @@
+"use client"
+
 import { Server, Shield, Zap, HeadphonesIcon, Database, Lock } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
+import FadeContent from "@/components/reactbits/fade-content"
+import SplitText from "@/components/reactbits/split-text"
 
 export function Features() {
   const features = [
@@ -39,7 +43,17 @@ export function Features() {
     <section id="features" className="py-24 px-4">
       <div className="container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">Todo lo que necesitas para triunfar</h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
+            <SplitText
+              text="Todo lo que necesitas para triunfar"
+              className="text-4xl md:text-5xl font-bold"
+              delay={60}
+              duration={0.5}
+              splitType="words"
+              from={{ opacity: 0, y: 30 }}
+              to={{ opacity: 1, y: 0 }}
+            />
+          </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
             Tecnología de punta y herramientas profesionales para llevar tu proyecto al siguiente nivel
           </p>
@@ -47,15 +61,17 @@ export function Features() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <Card key={index} className="border-border/50 hover:border-primary/50 transition-colors">
-              <CardContent className="p-6">
-                <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4">
-                  <feature.icon className="h-6 w-6" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
-                <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
-              </CardContent>
-            </Card>
+            <FadeContent key={index} blur duration={600} delay={index * 100}>
+              <Card className="border-border/50 hover:border-primary/50 transition-colors h-full">
+                <CardContent className="p-6">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4">
+                    <feature.icon className="h-6 w-6" />
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                </CardContent>
+              </Card>
+            </FadeContent>
           ))}
         </div>
       </div>
