@@ -6,10 +6,12 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Badge } from "@/components/ui/badge"
 import FadeContent from "@/components/reactbits/fade-content"
 import SplitText from "@/components/reactbits/split-text"
+import Link from "next/link"
 
 export function Pricing() {
   const plans = [
     {
+      id: 1,
       name: "Básico",
       price: "99",
       description: "Para empezar con tu primer proyecto",
@@ -25,6 +27,7 @@ export function Pricing() {
       ],
     },
     {
+      id: 2,
       name: "Intermedio",
       price: "199",
       description: "Ideal para proyectos en crecimiento",
@@ -41,6 +44,7 @@ export function Pricing() {
       ],
     },
     {
+      id: 3,
       name: "Avanzado",
       price: "349",
       description: "Para proyectos que necesitan potencia",
@@ -58,6 +62,7 @@ export function Pricing() {
       ],
     },
     {
+      id: 4,
       name: "Enterprise",
       price: "Personalizado",
       description: "Recursos a tu medida",
@@ -142,8 +147,10 @@ export function Pricing() {
                 </CardContent>
 
                 <CardFooter className="pt-4">
-                  <Button className="w-full" size="sm" variant={plan.popular ? "default" : "outline"}>
-                    {plan.price === "Personalizado" ? "Contactar" : "Comenzar"}
+                  <Button className="w-full" size="sm" variant={plan.popular ? "default" : "outline"} asChild>
+                    <Link href={plan.price === "Personalizado" ? "/contacto" : `/solicitar?plan=${plan.id}`}>
+                      {plan.price === "Personalizado" ? "Contactar" : "Comenzar"}
+                    </Link>
                   </Button>
                 </CardFooter>
               </Card>

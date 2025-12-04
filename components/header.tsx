@@ -40,10 +40,9 @@ export function Header() {
           </nav>
 
           <div className="flex items-center gap-3">
-            <Button variant="ghost" className="hidden sm:inline-flex">
-              Iniciar sesión
+            <Button asChild>
+              <Link href="/solicitar">Comenzar</Link>
             </Button>
-            <Button>Comenzar gratis</Button>
           </div>
         </div>
       </div>
