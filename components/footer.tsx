@@ -87,24 +87,24 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Legal</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
+                <Link href="/privacidad" className="hover:text-foreground transition-colors">
                   Privacidad
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
+                <Link href="/terminos" className="hover:text-foreground transition-colors">
                   Términos
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
+                <Link href="/sla" className="hover:text-foreground transition-colors">
                   SLA
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
+                <Link href="/cookies" className="hover:text-foreground transition-colors">
                   Cookies
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
