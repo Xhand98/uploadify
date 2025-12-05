@@ -35,24 +35,24 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Producto</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="/#features" className="hover:text-foreground transition-colors">
+                <Link href="/caracteristicas" className="hover:text-foreground transition-colors">
                   Características
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#pricing" className="hover:text-foreground transition-colors">
+                <Link href="/precios" className="hover:text-foreground transition-colors">
                   Precios
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Documentación
-                </a>
+                <Link href="/como-funciona" className="hover:text-foreground transition-colors">
+                  Cómo Funciona
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  API
-                </a>
+                <Link href="/solicitar" className="hover:text-foreground transition-colors">
+                  Solicitar Plan
+                </Link>
               </li>
             </ul>
           </div>
@@ -61,9 +61,9 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Empresa</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
+                <Link href="/como-funciona" className="hover:text-foreground transition-colors">
                   Sobre nosotros
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href="/blog" className="hover:text-foreground transition-colors">
@@ -71,9 +71,9 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Carreras
-                </a>
+                <Link href="/precios" className="hover:text-foreground transition-colors">
+                  Planes
+                </Link>
               </li>
               <li>
                 <Link href="/contacto" className="hover:text-foreground transition-colors">
