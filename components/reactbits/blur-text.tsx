@@ -15,7 +15,7 @@ interface BlurTextProps {
   onAnimationComplete?: () => void
 }
 
-export default function BlurText({
+export function BlurText({
   text,
   animateBy = "words",
   direction = "top",
@@ -75,3 +75,5 @@ export default function BlurText({
     </div>
   )
 }
+
+export default BlurText

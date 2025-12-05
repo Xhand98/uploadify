@@ -1,4 +1,7 @@
+"use client"
+
 import { BlogCard } from "./blog-card"
+import { FadeContent } from "@/components/reactbits/fade-content"
 
 const posts = [
   {
@@ -42,8 +45,10 @@ const posts = [
 export function BlogList() {
   return (
     <div className="grid md:grid-cols-2 gap-6">
-      {posts.map((post) => (
-        <BlogCard key={post.slug} {...post} />
+      {posts.map((post, index) => (
+        <FadeContent key={post.slug} delay={150 + index * 100} blur>
+          <BlogCard {...post} />
+        </FadeContent>
       ))}
     </div>
   )

@@ -1,6 +1,8 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BlogList } from "@/components/blog/blog-list"
+import { SplitText } from "@/components/reactbits/split-text"
+import { BlurText } from "@/components/reactbits/blur-text"
 
 export const metadata = {
   title: "Blog | Uploadify",
@@ -15,11 +17,13 @@ export default function BlogPage() {
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
-              Blog de <span className="text-primary">Uploadify</span>
+              <SplitText text="Blog de Uploadify" className="text-foreground" delay={50} />
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty">
-              Aprende sobre hosting, desarrollo web y las mejores prácticas para desplegar tus proyectos.
-            </p>
+            <BlurText
+              text="Aprende sobre hosting, desarrollo web y las mejores prácticas para desplegar tus proyectos."
+              className="text-lg text-muted-foreground max-w-2xl mx-auto text-pretty"
+              delay={100}
+            />
           </div>
           <BlogList />
         </div>

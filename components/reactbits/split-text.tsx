@@ -21,7 +21,7 @@ interface SplitTextProps {
   onLetterAnimationComplete?: () => void
 }
 
-export default function SplitText({
+export function SplitText({
   text,
   className = "",
   delay = 100,
@@ -98,3 +98,5 @@ export default function SplitText({
     </div>
   )
 }
+
+export default SplitText

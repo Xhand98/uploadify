@@ -1,7 +1,7 @@
 "use client"
 
 import { useRef, type ReactNode } from "react"
-import { motion, useInView } from "motion/react"
+import { motion, useInView } from "framer-motion"
 
 interface FadeContentProps {
   children: ReactNode
@@ -14,7 +14,7 @@ interface FadeContentProps {
   className?: string
 }
 
-export default function FadeContent({
+export function FadeContent({
   children,
   blur = false,
   duration = 1000,
@@ -59,3 +59,5 @@ export default function FadeContent({
     </motion.div>
   )
 }
+
+export default FadeContent
