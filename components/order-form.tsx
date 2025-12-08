@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
@@ -15,6 +14,7 @@ import { Badge } from "@/components/ui/badge"
 import { Upload, Send, CheckCircle2, Globe, Server, FileCode } from "lucide-react"
 import FadeContent from "@/components/reactbits/fade-content"
 import SplitText from "@/components/reactbits/split-text"
+import { createClient } from "@/lib/supabase/client"
 
 const plans = [
   {
@@ -64,6 +64,8 @@ export function OrderForm() {
 
   const [selectedPlan, setSelectedPlan] = useState(planParam || "intermedio")
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -76,10 +78,35 @@ export function OrderForm() {
     domainPreference: "",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Aquí iría la lógica de envío
-    setIsSubmitted(true)
+    setIsLoading(true)
+    setError(null)
+
+    try {
+      const supabase = createClient()
+
+      const { error: insertError } = await supabase.from("hosting_requests").insert({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || null,
+        project_name: formData.projectName,
+        project_type: formData.projectType,
+        project_url: formData.projectUrl || null,
+        description: formData.description || null,
+        has_database: formData.hasDatabase === "si",
+        domain_preference: formData.domainPreference || null,
+        plan: selectedPlan,
+      })
+
+      if (insertError) throw insertError
+
+      setIsSubmitted(true)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Error al enviar la solicitud")
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const handleInputChange = (field: string, value: string) => {
@@ -244,6 +271,7 @@ export function OrderForm() {
                     <Select
                       value={formData.projectType}
                       onValueChange={(value) => handleInputChange("projectType", value)}
+                      required
                     >
                       <SelectTrigger id="projectType">
                         <SelectValue placeholder="Selecciona el tipo" />
@@ -349,10 +377,22 @@ export function OrderForm() {
                 </p>
                 <p className="text-sm text-muted-foreground">Te contactaremos en menos de 24 horas</p>
               </div>
-              <Button type="submit" size="lg" className="w-full sm:w-auto">
-                <Send className="w-4 h-4 mr-2" />
-                Enviar solicitud
-              </Button>
+              <div className="flex flex-col items-end gap-2">
+                {error && <p className="text-sm text-red-500">{error}</p>}
+                <Button type="submit" size="lg" className="w-full sm:w-auto" disabled={isLoading}>
+                  {isLoading ? (
+                    <>
+                      <span className="animate-spin mr-2">⏳</span>
+                      Enviando...
+                    </>
+                  ) : (
+                    <>
+                      <Send className="w-4 h-4 mr-2" />
+                      Enviar solicitud
+                    </>
+                  )}
+                </Button>
+              </div>
             </div>
           </FadeContent>
         </form>
