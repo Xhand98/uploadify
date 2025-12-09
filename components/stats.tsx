@@ -3,31 +3,40 @@
 import FadeContent from "@/components/reactbits/fade-content"
 import Counter from "@/components/reactbits/counter"
 
-export function Stats() {
+interface StatsProps {
+  dict: {
+    uptime: string
+    deployment: string
+    students: string
+    support: string
+  }
+}
+
+export function Stats({ dict }: StatsProps) {
   const stats = [
     {
       value: 99.9,
       suffix: "%",
-      label: "Uptime garantizado",
+      label: dict.uptime,
       subtext: "SLA incluido",
     },
     {
-      value: 100,
+      value: 5,
       prefix: "<",
-      suffix: "ms",
-      label: "Tiempo de respuesta",
-      subtext: "Servidores en RD",
+      suffix: " min",
+      label: dict.deployment,
+      subtext: "Promedio",
     },
     {
       value: 24,
       suffix: "/7",
-      label: "Soporte técnico",
+      label: dict.support,
       subtext: "En español",
     },
     {
-      value: 5000,
+      value: 500,
       suffix: "+",
-      label: "Clientes activos",
+      label: dict.students,
       subtext: "Y creciendo",
     },
   ]

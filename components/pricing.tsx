@@ -7,77 +7,81 @@ import { Badge } from "@/components/ui/badge"
 import FadeContent from "@/components/reactbits/fade-content"
 import SplitText from "@/components/reactbits/split-text"
 import Link from "next/link"
+import type { Locale } from "@/lib/i18n/config"
 
-export function Pricing() {
+interface PricingProps {
+  dict: {
+    title: string
+    description: string
+    weekly: string
+    basic: {
+      name: string
+      price: string
+      description: string
+      features: string[]
+    }
+    medium: {
+      name: string
+      price: string
+      description: string
+      popular: string
+      features: string[]
+    }
+    advanced: {
+      name: string
+      price: string
+      description: string
+      features: string[]
+    }
+    enterprise: {
+      name: string
+      price: string
+      description: string
+      features: string[]
+    }
+    selectPlan: string
+  }
+  lang: Locale
+}
+
+export function Pricing({ dict, lang }: PricingProps) {
   const plans = [
     {
       id: 1,
-      name: "Básico",
-      price: "99",
-      description: "Para empezar con tu primer proyecto",
+      name: dict.basic.name,
+      price: dict.basic.price,
+      description: dict.basic.description,
       popular: false,
       specs: "250MB • 0.5C • 1T",
-      features: [
-        "250 MB de RAM",
-        "0.5 Core + 1 Thread",
-        "Dominio aleatorio",
-        "SSL gratis",
-        "Panel básico",
-        "Soporte por email",
-      ],
+      features: dict.basic.features,
     },
     {
       id: 2,
-      name: "Intermedio",
-      price: "199",
-      description: "Ideal para proyectos en crecimiento",
+      name: dict.medium.name,
+      price: dict.medium.price,
+      description: dict.medium.description,
       popular: true,
+      popularLabel: dict.medium.popular,
       specs: "1GB • 1C • 2T",
-      features: [
-        "1 GB de RAM",
-        "1 Core + 2 Threads",
-        "Dominio personalizado",
-        "SSL gratis",
-        "Panel completo",
-        "Soporte básico",
-        "Backups semanales",
-      ],
+      features: dict.medium.features,
     },
     {
       id: 3,
-      name: "Avanzado",
-      price: "349",
-      description: "Para proyectos que necesitan potencia",
+      name: dict.advanced.name,
+      price: dict.advanced.price,
+      description: dict.advanced.description,
       popular: false,
       specs: "2GB • 2C • 4T",
-      features: [
-        "2 GB de RAM",
-        "2 Cores + 4 Threads",
-        "Dominio personalizado",
-        "SSL gratis",
-        "Panel avanzado",
-        "Soporte preferencial",
-        "Backups diarios",
-        "Monitoreo 24/7",
-      ],
+      features: dict.advanced.features,
     },
     {
       id: 4,
-      name: "Enterprise",
-      price: "Personalizado",
-      description: "Recursos a tu medida",
+      name: dict.enterprise.name,
+      price: dict.enterprise.price,
+      description: dict.enterprise.description,
       popular: false,
       specs: "Custom",
-      features: [
-        "RAM personalizada",
-        "CPU personalizado",
-        "Dominio propio",
-        "SSL avanzado",
-        "Todo a medida",
-        "Contacto directo",
-        "Backups real-time",
-        "Prioridad máxima",
-      ],
+      features: dict.enterprise.features,
     },
   ]
 
@@ -87,7 +91,7 @@ export function Pricing() {
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
             <SplitText
-              text="Planes semanales accesibles"
+              text={dict.title}
               className="text-4xl md:text-5xl font-bold"
               delay={60}
               duration={0.5}
@@ -96,9 +100,7 @@ export function Pricing() {
               to={{ opacity: 1, y: 0 }}
             />
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Precios pensados para estudiantes. Paga semanalmente y escala cuando lo necesites.
-          </p>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">{dict.description}</p>
         </div>
 
         <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto">
@@ -109,7 +111,7 @@ export function Pricing() {
               >
                 {plan.popular && (
                   <div className="absolute -top-4 left-0 right-0 flex justify-center">
-                    <Badge className="bg-primary text-primary-foreground whitespace-nowrap">Más popular</Badge>
+                    <Badge className="bg-primary text-primary-foreground whitespace-nowrap">{plan.popularLabel}</Badge>
                   </div>
                 )}
 
@@ -125,7 +127,7 @@ export function Pricing() {
 
                 <CardContent className="flex-1">
                   <div className="mb-4">
-                    {plan.price === "Personalizado" ? (
+                    {plan.price === dict.enterprise.price ? (
                       <div className="text-2xl font-bold">Contactar</div>
                     ) : (
                       <div className="flex items-baseline gap-1">
@@ -148,8 +150,14 @@ export function Pricing() {
 
                 <CardFooter className="pt-4">
                   <Button className="w-full" size="sm" variant={plan.popular ? "default" : "outline"} asChild>
-                    <Link href={plan.price === "Personalizado" ? "/contacto" : `/solicitar?plan=${plan.id}`}>
-                      {plan.price === "Personalizado" ? "Contactar" : "Comenzar"}
+                    <Link
+                      href={
+                        plan.price === dict.enterprise.price
+                          ? `/${lang}/contacto`
+                          : `/${lang}/solicitar?plan=${plan.id}`
+                      }
+                    >
+                      {plan.price === dict.enterprise.price ? "Contactar" : dict.selectPlan}
                     </Link>
                   </Button>
                 </CardFooter>

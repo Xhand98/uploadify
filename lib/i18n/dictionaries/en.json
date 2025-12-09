@@ -1,0 +1,132 @@
+{
+  "nav": {
+    "howItWorks": "How It Works",
+    "features": "Features",
+    "pricing": "Pricing",
+    "blog": "Blog",
+    "contact": "Contact",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "badge": "Designed especially for students",
+    "title": "From your computer to the world in one click",
+    "description": "Hosting created especially for students. Almost immediate deployment of your projects with personalized support and affordable prices.",
+    "ctaPrimary": "Start now",
+    "ctaSecondary": "View weekly plans",
+    "feature1": "Fast deployment",
+    "feature2": "Domain included",
+    "feature3": "Student support"
+  },
+  "stats": {
+    "uptime": "Guaranteed uptime",
+    "deployment": "Deployment in minutes",
+    "students": "Active students",
+    "support": "Support"
+  },
+  "features": {
+    "title": "Everything you need to host your project",
+    "description": "Professional tools and dedicated support to get your project online in minutes",
+    "ssl": {
+      "title": "Free SSL",
+      "description": "Automatic SSL certificate to keep your site secure"
+    },
+    "deploy": {
+      "title": "Fast Deploy",
+      "description": "Upload your project and it will be online in minutes"
+    },
+    "support": {
+      "title": "Dedicated Support",
+      "description": "Personalized help when you need it"
+    },
+    "uptime": {
+      "title": "99.9% Uptime",
+      "description": "Your site always available for your users"
+    },
+    "backup": {
+      "title": "Automatic Backups",
+      "description": "Your data safe with daily backups"
+    },
+    "domain": {
+      "title": "Domain Included",
+      "description": "Free subdomain or bring your own domain"
+    }
+  },
+  "pricing": {
+    "title": "Affordable plans for students",
+    "description": "Pay weekly and cancel anytime. No long-term commitments.",
+    "weekly": "weekly",
+    "basic": {
+      "name": "Basic",
+      "price": "299",
+      "description": "Ideal for personal projects and practice",
+      "features": [
+        "Single domain (.uploadify.do)",
+        "250MB RAM / 0.5 Core / 1 Thread",
+        "Free SSL",
+        "Email support",
+        "Weekly backups"
+      ]
+    },
+    "medium": {
+      "name": "Medium",
+      "price": "699",
+      "description": "Perfect for university projects",
+      "popular": "Popular",
+      "features": [
+        "Up to 3 domains (.uploadify.do)",
+        "1GB RAM / 1 Core / 2 Threads",
+        "Free SSL",
+        "Priority support",
+        "Daily backups",
+        "Basic analytics"
+      ]
+    },
+    "advanced": {
+      "name": "Advanced",
+      "price": "1,499",
+      "description": "For high-demand projects",
+      "features": [
+        "Up to 10 domains (.uploadify.do + custom)",
+        "2GB RAM / 2 Cores / 4 Threads",
+        "Free SSL",
+        "24/7 WhatsApp support",
+        "Daily backups",
+        "Advanced analytics",
+        "CDN included"
+      ]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "price": "Custom",
+      "description": "For organizations and large projects",
+      "features": [
+        "Unlimited domains",
+        "Custom resources",
+        "Free SSL",
+        "24/7 dedicated support",
+        "Real-time backups",
+        "Enterprise analytics",
+        "Premium CDN",
+        "Technical consulting"
+      ]
+    },
+    "selectPlan": "Select plan"
+  },
+  "cta": {
+    "title": "Ready to deploy your project?",
+    "description": "Join hundreds of students who already trust Uploadify for their web projects",
+    "button": "Start free"
+  },
+  "footer": {
+    "description": "Professional hosting for students in the Dominican Republic.",
+    "product": "Product",
+    "company": "Company",
+    "aboutUs": "About us",
+    "plans": "Plans",
+    "legal": "Legal",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "cookies": "Cookies",
+    "rights": "All rights reserved."
+  }
+}
