@@ -1,0 +1,132 @@
+{
+  "nav": {
+    "howItWorks": "Como Funciona",
+    "features": "Recursos",
+    "pricing": "Preços",
+    "blog": "Blog",
+    "contact": "Contato",
+    "getStarted": "Começar"
+  },
+  "hero": {
+    "badge": "Projetado especialmente para estudantes",
+    "title": "Do seu computador para o mundo em um clique",
+    "description": "Hospedagem criada especialmente para estudantes. Implantação quase imediata dos seus projetos com suporte personalizado e preços acessíveis.",
+    "ctaPrimary": "Começar agora",
+    "ctaSecondary": "Ver planos semanais",
+    "feature1": "Implantação rápida",
+    "feature2": "Domínio incluído",
+    "feature3": "Suporte estudantil"
+  },
+  "stats": {
+    "uptime": "Uptime garantido",
+    "deployment": "Implantação em minutos",
+    "students": "Estudantes ativos",
+    "support": "Suporte"
+  },
+  "features": {
+    "title": "Tudo o que você precisa para hospedar seu projeto",
+    "description": "Ferramentas profissionais e suporte dedicado para colocar seu projeto online em minutos",
+    "ssl": {
+      "title": "SSL Grátis",
+      "description": "Certificado SSL automático para manter seu site seguro"
+    },
+    "deploy": {
+      "title": "Deploy Rápido",
+      "description": "Envie seu projeto e estará online em minutos"
+    },
+    "support": {
+      "title": "Suporte Dedicado",
+      "description": "Ajuda personalizada quando você precisar"
+    },
+    "uptime": {
+      "title": "99.9% Uptime",
+      "description": "Seu site sempre disponível para seus usuários"
+    },
+    "backup": {
+      "title": "Backups Automáticos",
+      "description": "Seus dados seguros com backups diários"
+    },
+    "domain": {
+      "title": "Domínio Incluído",
+      "description": "Subdomínio grátis ou traga seu próprio domínio"
+    }
+  },
+  "pricing": {
+    "title": "Planos acessíveis para estudantes",
+    "description": "Pague semanalmente e cancele quando quiser. Sem compromissos de longo prazo.",
+    "weekly": "semanal",
+    "basic": {
+      "name": "Básico",
+      "price": "299",
+      "description": "Ideal para projetos pessoais e prática",
+      "features": [
+        "Domínio único (.uploadify.do)",
+        "250MB RAM / 0.5 Core / 1 Thread",
+        "SSL gratuito",
+        "Suporte por email",
+        "Backups semanais"
+      ]
+    },
+    "medium": {
+      "name": "Médio",
+      "price": "699",
+      "description": "Perfeito para projetos universitários",
+      "popular": "Popular",
+      "features": [
+        "Até 3 domínios (.uploadify.do)",
+        "1GB RAM / 1 Core / 2 Threads",
+        "SSL gratuito",
+        "Suporte prioritário",
+        "Backups diários",
+        "Análises básicas"
+      ]
+    },
+    "advanced": {
+      "name": "Avançado",
+      "price": "1,499",
+      "description": "Para projetos de alta demanda",
+      "features": [
+        "Até 10 domínios (.uploadify.do + personalizado)",
+        "2GB RAM / 2 Cores / 4 Threads",
+        "SSL gratuito",
+        "Suporte 24/7 WhatsApp",
+        "Backups diários",
+        "Análises avançadas",
+        "CDN incluído"
+      ]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "price": "Personalizado",
+      "description": "Para organizações e grandes projetos",
+      "features": [
+        "Domínios ilimitados",
+        "Recursos personalizados",
+        "SSL gratuito",
+        "Suporte dedicado 24/7",
+        "Backups em tempo real",
+        "Análises empresariais",
+        "CDN premium",
+        "Consultoria técnica"
+      ]
+    },
+    "selectPlan": "Selecionar plano"
+  },
+  "cta": {
+    "title": "Pronto para implantar seu projeto?",
+    "description": "Junte-se a centenas de estudantes que já confiam na Uploadify para seus projetos web",
+    "button": "Começar grátis"
+  },
+  "footer": {
+    "description": "Hospedagem profissional para estudantes na República Dominicana.",
+    "product": "Produto",
+    "company": "Empresa",
+    "aboutUs": "Sobre nós",
+    "plans": "Planos",
+    "legal": "Legal",
+    "privacy": "Privacidade",
+    "terms": "Termos",
+    "cookies": "Cookies",
+    "rights": "Todos os direitos reservados."
+  }
+}

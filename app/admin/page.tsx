@@ -22,5 +22,9 @@ export default async function AdminPage() {
     .select("*")
     .order("created_at", { ascending: false })
 
-  return <AdminDashboard user={data.user} requests={requests || []} messages={messages || []} />
+  const { data: blogPosts } = await supabase.from("blog_posts").select("*").order("created_at", { ascending: false })
+
+  return (
+    <AdminDashboard user={data.user} requests={requests || []} messages={messages || []} blogPosts={blogPosts || []} />
+  )
 }

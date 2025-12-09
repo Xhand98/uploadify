@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Globe } from "lucide-react"
 import { usePathname } from "next/navigation"
 import Link from "next/link"
-import type { Locale } from "@/lib/i18n/config"
+import { type Locale, localeLabels, i18n } from "@/lib/i18n/config"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 
 interface LanguageSwitcherProps {
@@ -29,16 +29,13 @@ export function LanguageSwitcher({ lang }: LanguageSwitcherProps) {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem asChild>
-          <Link href={redirectedPathname("es")} className={lang === "es" ? "font-bold" : ""}>
-            Español
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild>
-          <Link href={redirectedPathname("en")} className={lang === "en" ? "font-bold" : ""}>
-            English
-          </Link>
-        </DropdownMenuItem>
+        {i18n.locales.map((locale) => (
+          <DropdownMenuItem key={locale} asChild>
+            <Link href={redirectedPathname(locale)} className={lang === locale ? "font-bold" : ""}>
+              {localeLabels[locale]}
+            </Link>
+          </DropdownMenuItem>
+        ))}
       </DropdownMenuContent>
     </DropdownMenu>
   )

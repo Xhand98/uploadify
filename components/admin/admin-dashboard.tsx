@@ -8,9 +8,26 @@ import { Badge } from "@/components/ui/badge"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { HostingLogo } from "@/components/hosting-logo"
 import { createClient } from "@/lib/supabase/client"
-import { useRouter } from "next/navigation"
-import { LogOut, Server, Mail, Clock, CheckCircle2, AlertCircle, ExternalLink, Phone, Database } from "lucide-react"
+import { useRouter, useSearchParams } from "next/navigation"
+import {
+  LogOut,
+  Server,
+  Mail,
+  Clock,
+  CheckCircle2,
+  AlertCircle,
+  ExternalLink,
+  Phone,
+  Database,
+  FileText,
+  Plus,
+  Edit,
+  Trash2,
+  Eye,
+  EyeOff,
+} from "lucide-react"
 import type { User } from "@supabase/supabase-js"
+import Link from "next/link"
 
 interface HostingRequest {
   id: string
@@ -39,10 +56,26 @@ interface ContactMessage {
   message: string
 }
 
+interface BlogPost {
+  id: string
+  created_at: string
+  updated_at: string
+  title: string
+  slug: string
+  excerpt: string
+  content: string
+  cover_image: string | null
+  category: string
+  author: string
+  published: boolean
+  lang: string
+}
+
 interface AdminDashboardProps {
   user: User
   requests: HostingRequest[]
   messages: ContactMessage[]
+  blogPosts: BlogPost[]
 }
 
 const statusColors: Record<string, string> = {
@@ -66,10 +99,13 @@ const planLabels: Record<string, string> = {
   enterprise: "Enterprise",
 }
 
-export function AdminDashboard({ user, requests, messages }: AdminDashboardProps) {
+export function AdminDashboard({ user, requests, messages, blogPosts }: AdminDashboardProps) {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const defaultTab = searchParams.get("tab") || "requests"
   const [localRequests, setLocalRequests] = useState(requests)
   const [localMessages, setLocalMessages] = useState(messages)
+  const [localPosts, setLocalPosts] = useState(blogPosts)
 
   const handleLogout = async () => {
     const supabase = createClient()
@@ -95,8 +131,29 @@ export function AdminDashboard({ user, requests, messages }: AdminDashboardProps
     }
   }
 
+  const deletePost = async (id: string) => {
+    if (!confirm("¿Estás seguro de que quieres eliminar este post?")) return
+
+    const supabase = createClient()
+    const { error } = await supabase.from("blog_posts").delete().eq("id", id)
+
+    if (!error) {
+      setLocalPosts((prev) => prev.filter((post) => post.id !== id))
+    }
+  }
+
+  const togglePublish = async (id: string, published: boolean) => {
+    const supabase = createClient()
+    const { error } = await supabase.from("blog_posts").update({ published: !published }).eq("id", id)
+
+    if (!error) {
+      setLocalPosts((prev) => prev.map((post) => (post.id === id ? { ...post, published: !published } : post)))
+    }
+  }
+
   const pendingRequests = localRequests.filter((r) => r.status === "pendiente").length
   const unreadMessages = localMessages.filter((m) => !m.is_read).length
+  const draftPosts = localPosts.filter((p) => !p.published).length
 
   return (
     <div className="min-h-screen bg-background">
@@ -119,7 +176,7 @@ export function AdminDashboard({ user, requests, messages }: AdminDashboardProps
 
       <main className="container mx-auto px-4 py-8">
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
           <Card>
             <CardContent className="pt-6">
               <div className="flex items-center gap-3">
@@ -172,10 +229,23 @@ export function AdminDashboard({ user, requests, messages }: AdminDashboardProps
               </div>
             </CardContent>
           </Card>
+          <Card>
+            <CardContent className="pt-6">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-lg bg-purple-500/10">
+                  <FileText className="w-5 h-5 text-purple-600" />
+                </div>
+                <div>
+                  <p className="text-2xl font-bold">{localPosts.length}</p>
+                  <p className="text-xs text-muted-foreground">Blog Posts</p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </div>
 
         {/* Tabs */}
-        <Tabs defaultValue="requests">
+        <Tabs defaultValue={defaultTab}>
           <TabsList className="mb-6">
             <TabsTrigger value="requests" className="gap-2">
               <Server className="w-4 h-4" />
@@ -192,6 +262,15 @@ export function AdminDashboard({ user, requests, messages }: AdminDashboardProps
               {unreadMessages > 0 && (
                 <Badge variant="destructive" className="ml-1 h-5 w-5 p-0 flex items-center justify-center text-xs">
                   {unreadMessages}
+                </Badge>
+              )}
+            </TabsTrigger>
+            <TabsTrigger value="blog" className="gap-2">
+              <FileText className="w-4 h-4" />
+              Blog
+              {draftPosts > 0 && (
+                <Badge variant="secondary" className="ml-1 h-5 w-5 p-0 flex items-center justify-center text-xs">
+                  {draftPosts}
                 </Badge>
               )}
             </TabsTrigger>
@@ -324,6 +403,73 @@ export function AdminDashboard({ user, requests, messages }: AdminDashboardProps
                     </div>
                     <p className="text-xs text-muted-foreground mt-3">
                       {new Date(message.created_at).toLocaleString("es-DO")}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))
+            )}
+          </TabsContent>
+
+          <TabsContent value="blog" className="space-y-4">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-xl font-semibold">Gestión de Blog</h2>
+              <Button asChild>
+                <Link href="/admin/blog/new">
+                  <Plus className="w-4 h-4 mr-2" />
+                  Nuevo Post
+                </Link>
+              </Button>
+            </div>
+
+            {localPosts.length === 0 ? (
+              <Card>
+                <CardContent className="py-12 text-center">
+                  <FileText className="w-12 h-12 mx-auto mb-4 text-muted-foreground" />
+                  <p className="text-muted-foreground mb-4">No hay posts aún</p>
+                  <Button asChild>
+                    <Link href="/admin/blog/new">
+                      <Plus className="w-4 h-4 mr-2" />
+                      Crear primer post
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
+            ) : (
+              localPosts.map((post) => (
+                <Card key={post.id}>
+                  <CardHeader className="pb-3">
+                    <div className="flex items-start justify-between">
+                      <div>
+                        <CardTitle className="text-lg flex items-center gap-2">
+                          {post.title}
+                          <Badge variant={post.published ? "default" : "secondary"}>
+                            {post.published ? "Publicado" : "Borrador"}
+                          </Badge>
+                          <Badge variant="outline">{post.lang.toUpperCase()}</Badge>
+                        </CardTitle>
+                        <CardDescription className="mt-1">
+                          {post.category} • {post.author} • {new Date(post.created_at).toLocaleDateString("es-DO")}
+                        </CardDescription>
+                      </div>
+                      <div className="flex gap-2">
+                        <Button variant="ghost" size="icon" onClick={() => togglePublish(post.id, post.published)}>
+                          {post.published ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                        </Button>
+                        <Button variant="ghost" size="icon" asChild>
+                          <Link href={`/admin/blog/${post.id}`}>
+                            <Edit className="w-4 h-4" />
+                          </Link>
+                        </Button>
+                        <Button variant="ghost" size="icon" onClick={() => deletePost(post.id)}>
+                          <Trash2 className="w-4 h-4 text-destructive" />
+                        </Button>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground line-clamp-2">{post.excerpt}</p>
+                    <p className="text-xs text-muted-foreground mt-2">
+                      Slug: /{post.lang}/blog/{post.slug}
                     </p>
                   </CardContent>
                 </Card>

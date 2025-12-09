@@ -1,0 +1,132 @@
+{
+  "nav": {
+    "howItWorks": "Comment ça marche",
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs",
+    "blog": "Blog",
+    "contact": "Contact",
+    "getStarted": "Commencer"
+  },
+  "hero": {
+    "badge": "Conçu spécialement pour les étudiants",
+    "title": "De votre ordinateur au monde en un clic",
+    "description": "Hébergement créé spécialement pour les étudiants. Déploiement quasi immédiat de vos projets avec un support personnalisé et des prix abordables.",
+    "ctaPrimary": "Commencer maintenant",
+    "ctaSecondary": "Voir les plans hebdomadaires",
+    "feature1": "Déploiement rapide",
+    "feature2": "Domaine inclus",
+    "feature3": "Support étudiant"
+  },
+  "stats": {
+    "uptime": "Disponibilité garantie",
+    "deployment": "Déploiement en minutes",
+    "students": "Étudiants actifs",
+    "support": "Support"
+  },
+  "features": {
+    "title": "Tout ce dont vous avez besoin pour héberger votre projet",
+    "description": "Outils professionnels et support dédié pour mettre votre projet en ligne en quelques minutes",
+    "ssl": {
+      "title": "SSL Gratuit",
+      "description": "Certificat SSL automatique pour sécuriser votre site"
+    },
+    "deploy": {
+      "title": "Déploiement Rapide",
+      "description": "Téléchargez votre projet et il sera en ligne en minutes"
+    },
+    "support": {
+      "title": "Support Dédié",
+      "description": "Aide personnalisée quand vous en avez besoin"
+    },
+    "uptime": {
+      "title": "99.9% Disponibilité",
+      "description": "Votre site toujours disponible pour vos utilisateurs"
+    },
+    "backup": {
+      "title": "Sauvegardes Automatiques",
+      "description": "Vos données sécurisées avec des sauvegardes quotidiennes"
+    },
+    "domain": {
+      "title": "Domaine Inclus",
+      "description": "Sous-domaine gratuit ou apportez votre propre domaine"
+    }
+  },
+  "pricing": {
+    "title": "Plans abordables pour les étudiants",
+    "description": "Payez à la semaine et annulez quand vous voulez. Sans engagement à long terme.",
+    "weekly": "hebdomadaire",
+    "basic": {
+      "name": "Basique",
+      "price": "299",
+      "description": "Idéal pour les projets personnels et la pratique",
+      "features": [
+        "Domaine unique (.uploadify.do)",
+        "250MB RAM / 0.5 Core / 1 Thread",
+        "SSL gratuit",
+        "Support par email",
+        "Sauvegardes hebdomadaires"
+      ]
+    },
+    "medium": {
+      "name": "Moyen",
+      "price": "699",
+      "description": "Parfait pour les projets universitaires",
+      "popular": "Populaire",
+      "features": [
+        "Jusqu'à 3 domaines (.uploadify.do)",
+        "1GB RAM / 1 Core / 2 Threads",
+        "SSL gratuit",
+        "Support prioritaire",
+        "Sauvegardes quotidiennes",
+        "Analyses basiques"
+      ]
+    },
+    "advanced": {
+      "name": "Avancé",
+      "price": "1,499",
+      "description": "Pour les projets à forte demande",
+      "features": [
+        "Jusqu'à 10 domaines (.uploadify.do + personnalisé)",
+        "2GB RAM / 2 Cores / 4 Threads",
+        "SSL gratuit",
+        "Support 24/7 WhatsApp",
+        "Sauvegardes quotidiennes",
+        "Analyses avancées",
+        "CDN inclus"
+      ]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "price": "Personnalisé",
+      "description": "Pour les organisations et grands projets",
+      "features": [
+        "Domaines illimités",
+        "Ressources personnalisées",
+        "SSL gratuit",
+        "Support dédié 24/7",
+        "Sauvegardes en temps réel",
+        "Analyses entreprise",
+        "CDN premium",
+        "Conseil technique"
+      ]
+    },
+    "selectPlan": "Choisir ce plan"
+  },
+  "cta": {
+    "title": "Prêt à déployer votre projet?",
+    "description": "Rejoignez des centaines d'étudiants qui font déjà confiance à Uploadify pour leurs projets web",
+    "button": "Commencer gratuitement"
+  },
+  "footer": {
+    "description": "Hébergement professionnel pour les étudiants en République Dominicaine.",
+    "product": "Produit",
+    "company": "Entreprise",
+    "aboutUs": "À propos",
+    "plans": "Plans",
+    "legal": "Légal",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "cookies": "Cookies",
+    "rights": "Tous droits réservés."
+  }
+}
