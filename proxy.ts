@@ -4,8 +4,16 @@ import { NextResponse } from "next/server"
 import { i18n } from "@/lib/i18n/config"
 import { getLocale } from "@/lib/i18n/get-locale"
 
+const publicRoutes = ["/admin", "/auth", "/api"]
+
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl
+
+  const isPublicRoute = publicRoutes.some((route) => pathname.startsWith(route) || pathname === route)
+
+  if (isPublicRoute) {
+    return await updateSession(request)
+  }
 
   const pathnameHasLocale = i18n.locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`,
