@@ -1,15 +1,6 @@
 import { redirect } from "next/navigation"
 import { createClient } from "@/lib/supabase/server"
 import { AdminDashboard } from "@/components/admin/admin-dashboard"
-import { Suspense } from "react"
-
-function AdminLoading() {
-  return (
-    <div className="min-h-screen bg-background flex items-center justify-center">
-      <div className="animate-pulse text-muted-foreground">Cargando panel de administración...</div>
-    </div>
-  )
-}
 
 export default async function AdminPage() {
   const supabase = await createClient()
@@ -34,13 +25,6 @@ export default async function AdminPage() {
   const { data: blogPosts } = await supabase.from("blog_posts").select("*").order("created_at", { ascending: false })
 
   return (
-    <Suspense fallback={<AdminLoading />}>
-      <AdminDashboard
-        user={data.user}
-        requests={requests || []}
-        messages={messages || []}
-        blogPosts={blogPosts || []}
-      />
-    </Suspense>
+    <AdminDashboard user={data.user} requests={requests || []} messages={messages || []} blogPosts={blogPosts || []} />
   )
 }
