@@ -7,6 +7,7 @@ import BlurText from "@/components/reactbits/blur-text"
 import FadeContent from "@/components/reactbits/fade-content"
 import Link from "next/link"
 import type { Locale } from "@/lib/i18n/config"
+import { useEffect, useState } from "react"
 
 interface HeroProps {
   dict: {
@@ -20,6 +21,99 @@ interface HeroProps {
     feature3: string
   }
   lang: Locale
+}
+
+function AnimatedTerminal() {
+  const [lines, setLines] = useState<{ text: string; type: "command" | "output" | "success" }[]>([])
+  const [currentLine, setCurrentLine] = useState(0)
+  const [currentChar, setCurrentChar] = useState(0)
+  const [isTyping, setIsTyping] = useState(true)
+
+  const terminalContent = [
+    { text: "$ uploadify deploy ./my-website", type: "command" as const },
+    { text: "Compressing files...", type: "output" as const },
+    { text: "Uploading to server...", type: "output" as const },
+    { text: "Configuring SSL certificate...", type: "output" as const },
+    { text: "Setting up domain...", type: "output" as const },
+    { text: "✓ Deployed successfully!", type: "success" as const },
+    { text: "→ https://my-website.uploadify.do", type: "success" as const },
+  ]
+
+  useEffect(() => {
+    if (currentLine >= terminalContent.length) {
+      setTimeout(() => {
+        setLines([])
+        setCurrentLine(0)
+        setCurrentChar(0)
+        setIsTyping(true)
+      }, 3000)
+      return
+    }
+
+    const line = terminalContent[currentLine]
+
+    if (line.type === "command" && isTyping) {
+      if (currentChar < line.text.length) {
+        const timeout = setTimeout(() => {
+          setLines((prev) => {
+            const newLines = [...prev]
+            if (newLines.length === currentLine) {
+              newLines.push({ text: line.text.slice(0, currentChar + 1), type: line.type })
+            } else {
+              newLines[currentLine] = { text: line.text.slice(0, currentChar + 1), type: line.type }
+            }
+            return newLines
+          })
+          setCurrentChar((prev) => prev + 1)
+        }, 50)
+        return () => clearTimeout(timeout)
+      } else {
+        const timeout = setTimeout(() => {
+          setCurrentLine((prev) => prev + 1)
+          setCurrentChar(0)
+          setIsTyping(true)
+        }, 500)
+        return () => clearTimeout(timeout)
+      }
+    } else {
+      const timeout = setTimeout(() => {
+        setLines((prev) => [...prev, line])
+        setCurrentLine((prev) => prev + 1)
+        setCurrentChar(0)
+      }, 400)
+      return () => clearTimeout(timeout)
+    }
+  }, [currentLine, currentChar, isTyping])
+
+  return (
+    <div className="w-full rounded-lg bg-[#0d1117] border border-[#30363d] overflow-hidden font-mono text-sm shadow-2xl">
+      {/* Terminal header */}
+      <div className="flex items-center gap-2 px-4 py-3 bg-[#161b22] border-b border-[#30363d]">
+        <div className="flex gap-2">
+          <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+          <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+          <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+        </div>
+        <span className="text-[#8b949e] text-xs ml-2">terminal — uploadify</span>
+      </div>
+      {/* Terminal content */}
+      <div className="p-4 min-h-[280px] text-left">
+        {lines.map((line, index) => (
+          <div
+            key={index}
+            className={`mb-1 ${
+              line.type === "command" ? "text-[#c9d1d9]" : line.type === "success" ? "text-[#7ee787]" : "text-[#8b949e]"
+            }`}
+          >
+            {line.text}
+          </div>
+        ))}
+        {currentLine < terminalContent.length && terminalContent[currentLine].type === "command" && (
+          <span className="inline-block w-2 h-4 bg-primary animate-pulse ml-0.5"></span>
+        )}
+      </div>
+    </div>
+  )
 }
 
 export function Hero({ dict, lang }: HeroProps) {
@@ -87,15 +181,11 @@ export function Hero({ dict, lang }: HeroProps) {
         </div>
 
         <FadeContent blur duration={1000} delay={800}>
-          <div className="mt-20 max-w-5xl mx-auto">
+          <div className="mt-20 max-w-4xl mx-auto">
             <div className="relative rounded-xl border border-border bg-card overflow-hidden shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
-              <div className="relative p-8">
-                <img
-                  src="/modern-hosting-control-panel-dashboard-with-server.jpg"
-                  alt="Uploadify Dashboard"
-                  className="w-full h-auto rounded-lg"
-                />
+              <div className="relative p-4 md:p-8">
+                <AnimatedTerminal />
               </div>
             </div>
           </div>
