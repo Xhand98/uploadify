@@ -127,6 +127,12 @@
     "privacy": "Confidentialité",
     "terms": "Conditions",
     "cookies": "Cookies",
-    "rights": "Tous droits réservés."
+    "rights": "Tous droits réservés.",
+    "features": "Fonctionnalités",
+    "pricing": "Tarifs",
+    "howItWorks": "Comment ça marche",
+    "requestPlan": "Demander un plan",
+    "blog": "Blog",
+    "contact": "Contact"
   }
 }

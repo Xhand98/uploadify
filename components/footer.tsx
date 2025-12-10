@@ -15,6 +15,12 @@ interface FooterProps {
     terms: string
     cookies: string
     rights: string
+    features: string
+    pricing: string
+    howItWorks: string
+    requestPlan: string
+    blog: string
+    contact: string
   }
   lang: Locale
 }
@@ -51,22 +57,22 @@ export function Footer({ dict, lang }: FooterProps) {
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
                 <Link href={`/${lang}/caracteristicas`} className="hover:text-foreground transition-colors">
-                  Características
+                  {dict.features}
                 </Link>
               </li>
               <li>
                 <Link href={`/${lang}/precios`} className="hover:text-foreground transition-colors">
-                  Precios
+                  {dict.pricing}
                 </Link>
               </li>
               <li>
                 <Link href={`/${lang}/como-funciona`} className="hover:text-foreground transition-colors">
-                  Cómo Funciona
+                  {dict.howItWorks}
                 </Link>
               </li>
               <li>
                 <Link href={`/${lang}/solicitar`} className="hover:text-foreground transition-colors">
-                  Solicitar Plan
+                  {dict.requestPlan}
                 </Link>
               </li>
             </ul>
@@ -82,7 +88,7 @@ export function Footer({ dict, lang }: FooterProps) {
               </li>
               <li>
                 <Link href={`/${lang}/blog`} className="hover:text-foreground transition-colors">
-                  Blog
+                  {dict.blog}
                 </Link>
               </li>
               <li>
@@ -92,7 +98,7 @@ export function Footer({ dict, lang }: FooterProps) {
               </li>
               <li>
                 <Link href={`/${lang}/contacto`} className="hover:text-foreground transition-colors">
-                  Contacto
+                  {dict.contact}
                 </Link>
               </li>
             </ul>

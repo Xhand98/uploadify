@@ -19,11 +19,11 @@ export default async function Home({
   return (
     <main className="min-h-screen">
       <Header lang={lang} dict={dict.nav} />
-      <Hero dict={dict.hero} />
+      <Hero dict={dict.hero} lang={lang} />
       <Stats dict={dict.stats} />
       <Features dict={dict.features} />
       <Pricing dict={dict.pricing} lang={lang} />
-      <CTA dict={dict.cta} />
+      <CTA dict={dict.cta} lang={lang} />
       <Footer dict={dict.footer} lang={lang} />
     </main>
   )

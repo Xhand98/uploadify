@@ -5,6 +5,8 @@ import { ArrowRight, CheckCircle } from "lucide-react"
 import SplitText from "@/components/reactbits/split-text"
 import BlurText from "@/components/reactbits/blur-text"
 import FadeContent from "@/components/reactbits/fade-content"
+import Link from "next/link"
+import type { Locale } from "@/lib/i18n/config"
 
 interface HeroProps {
   dict: {
@@ -17,9 +19,10 @@ interface HeroProps {
     feature2: string
     feature3: string
   }
+  lang: Locale
 }
 
-export function Hero({ dict }: HeroProps) {
+export function Hero({ dict, lang }: HeroProps) {
   return (
     <section className="pt-32 pb-20 px-4">
       <div className="container mx-auto">
@@ -53,12 +56,14 @@ export function Hero({ dict }: HeroProps) {
 
           <FadeContent blur duration={800} delay={400}>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-              <Button size="lg" className="text-base px-8 group">
-                {dict.ctaPrimary}
-                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              <Button size="lg" className="text-base px-8 group" asChild>
+                <Link href={`/${lang}/solicitar`}>
+                  {dict.ctaPrimary}
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
-              <Button size="lg" variant="outline" className="text-base px-8 bg-transparent">
-                {dict.ctaSecondary}
+              <Button size="lg" variant="outline" className="text-base px-8 bg-transparent" asChild>
+                <Link href={`/${lang}/precios`}>{dict.ctaSecondary}</Link>
               </Button>
             </div>
           </FadeContent>

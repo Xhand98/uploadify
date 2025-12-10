@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import FadeContent from "@/components/reactbits/fade-content"
 import SplitText from "@/components/reactbits/split-text"
+import Link from "next/link"
+import type { Locale } from "@/lib/i18n/config"
 
 interface CTAProps {
   dict: {
@@ -11,9 +13,10 @@ interface CTAProps {
     description: string
     button: string
   }
+  lang: Locale
 }
 
-export function CTA({ dict }: CTAProps) {
+export function CTA({ dict, lang }: CTAProps) {
   return (
     <section className="py-24 px-4">
       <div className="container mx-auto">
@@ -35,9 +38,11 @@ export function CTA({ dict }: CTAProps) {
               </h2>
               <p className="text-xl text-primary-foreground/90 mb-8 text-pretty leading-relaxed">{dict.description}</p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                <Button size="lg" variant="secondary" className="text-base px-8 group">
-                  {dict.button}
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                <Button size="lg" variant="secondary" className="text-base px-8 group" asChild>
+                  <Link href={`/${lang}/solicitar`}>
+                    {dict.button}
+                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </Button>
               </div>
             </div>
