@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, CheckCircle } from "lucide-react"
+import { ArrowRight, CheckCircle, Upload, Server, Globe, Zap } from "lucide-react"
 import SplitText from "@/components/reactbits/split-text"
 import BlurText from "@/components/reactbits/blur-text"
 import FadeContent from "@/components/reactbits/fade-content"
@@ -23,94 +23,132 @@ interface HeroProps {
   lang: Locale
 }
 
-function AnimatedTerminal() {
-  const [lines, setLines] = useState<{ text: string; type: "command" | "output" | "success" }[]>([])
-  const [currentLine, setCurrentLine] = useState(0)
-  const [currentChar, setCurrentChar] = useState(0)
-  const [isTyping, setIsTyping] = useState(true)
+function AnimatedServiceFlow() {
+  const [activeStep, setActiveStep] = useState(0)
 
-  const terminalContent = [
-    { text: "$ uploadify deploy ./my-website", type: "command" as const },
-    { text: "Compressing files...", type: "output" as const },
-    { text: "Uploading to server...", type: "output" as const },
-    { text: "Configuring SSL certificate...", type: "output" as const },
-    { text: "Setting up domain...", type: "output" as const },
-    { text: "✓ Deployed successfully!", type: "success" as const },
-    { text: "→ https://my-website.uploadify.do", type: "success" as const },
+  const steps = [
+    { icon: Upload, label: "Envías tu proyecto", color: "text-blue-400" },
+    { icon: Zap, label: "Nosotros lo procesamos", color: "text-yellow-400" },
+    { icon: Server, label: "Configuramos servidor", color: "text-purple-400" },
+    { icon: Globe, label: "¡Tu web está online!", color: "text-primary" },
   ]
 
   useEffect(() => {
-    if (currentLine >= terminalContent.length) {
-      setTimeout(() => {
-        setLines([])
-        setCurrentLine(0)
-        setCurrentChar(0)
-        setIsTyping(true)
-      }, 3000)
-      return
-    }
-
-    const line = terminalContent[currentLine]
-
-    if (line.type === "command" && isTyping) {
-      if (currentChar < line.text.length) {
-        const timeout = setTimeout(() => {
-          setLines((prev) => {
-            const newLines = [...prev]
-            if (newLines.length === currentLine) {
-              newLines.push({ text: line.text.slice(0, currentChar + 1), type: line.type })
-            } else {
-              newLines[currentLine] = { text: line.text.slice(0, currentChar + 1), type: line.type }
-            }
-            return newLines
-          })
-          setCurrentChar((prev) => prev + 1)
-        }, 50)
-        return () => clearTimeout(timeout)
-      } else {
-        const timeout = setTimeout(() => {
-          setCurrentLine((prev) => prev + 1)
-          setCurrentChar(0)
-          setIsTyping(true)
-        }, 500)
-        return () => clearTimeout(timeout)
-      }
-    } else {
-      const timeout = setTimeout(() => {
-        setLines((prev) => [...prev, line])
-        setCurrentLine((prev) => prev + 1)
-        setCurrentChar(0)
-      }, 400)
-      return () => clearTimeout(timeout)
-    }
-  }, [currentLine, currentChar, isTyping])
+    const interval = setInterval(() => {
+      setActiveStep((prev) => (prev + 1) % steps.length)
+    }, 2000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
-    <div className="w-full rounded-lg bg-[#0d1117] border border-[#30363d] overflow-hidden font-mono text-sm shadow-2xl">
-      {/* Terminal header */}
-      <div className="flex items-center gap-2 px-4 py-3 bg-[#161b22] border-b border-[#30363d]">
-        <div className="flex gap-2">
-          <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-          <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-          <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
-        </div>
-        <span className="text-[#8b949e] text-xs ml-2">terminal — uploadify</span>
-      </div>
-      {/* Terminal content */}
-      <div className="p-4 min-h-[280px] text-left">
-        {lines.map((line, index) => (
-          <div
-            key={index}
-            className={`mb-1 ${
-              line.type === "command" ? "text-[#c9d1d9]" : line.type === "success" ? "text-[#7ee787]" : "text-[#8b949e]"
-            }`}
-          >
-            {line.text}
+    <div className="w-full">
+      {/* Main visualization card */}
+      <div className="rounded-2xl bg-gradient-to-br from-[#0d1117] to-[#161b22] border border-[#30363d] overflow-hidden shadow-2xl">
+        {/* Header */}
+        <div className="px-6 py-4 border-b border-[#30363d] flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
+              <span className="text-primary font-bold text-lg">U</span>
+            </div>
+            <span className="text-white font-semibold">Uploadify Flow</span>
           </div>
-        ))}
-        {currentLine < terminalContent.length && terminalContent[currentLine].type === "command" && (
-          <span className="inline-block w-2 h-4 bg-primary animate-pulse ml-0.5"></span>
-        )}
+          <div className="flex gap-2">
+            <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+            <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+            <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+          </div>
+        </div>
+
+        {/* Flow visualization */}
+        <div className="p-8 md:p-12">
+          {/* Steps */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 mb-8">
+            {steps.map((step, index) => {
+              const Icon = step.icon
+              const isActive = index === activeStep
+              const isCompleted = index < activeStep
+
+              return (
+                <div key={index} className="flex items-center gap-4 md:flex-col md:gap-3">
+                  <div
+                    className={`relative w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 ${
+                      isActive
+                        ? "bg-primary/20 scale-110 shadow-lg shadow-primary/20"
+                        : isCompleted
+                          ? "bg-primary/10"
+                          : "bg-[#21262d]"
+                    }`}
+                  >
+                    <Icon
+                      className={`w-7 h-7 transition-all duration-500 ${
+                        isActive ? step.color : isCompleted ? "text-primary/60" : "text-[#484f58]"
+                      }`}
+                    />
+                    {isActive && (
+                      <span className="absolute inset-0 rounded-2xl animate-ping bg-primary/20 opacity-75"></span>
+                    )}
+                  </div>
+                  <span
+                    className={`text-sm font-medium transition-colors duration-300 text-center ${
+                      isActive ? "text-white" : "text-[#8b949e]"
+                    }`}
+                  >
+                    {step.label}
+                  </span>
+
+                  {/* Connector line (hidden on last item) */}
+                  {index < steps.length - 1 && (
+                    <div className="hidden md:block w-12 lg:w-20 h-0.5 bg-[#30363d] relative mx-2">
+                      <div
+                        className={`absolute inset-y-0 left-0 bg-primary transition-all duration-500 ${
+                          index < activeStep ? "w-full" : "w-0"
+                        }`}
+                      ></div>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Simulated project cards */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+            {["mi-portfolio", "tienda-online", "blog-personal", "app-tareas"].map((project, i) => (
+              <div
+                key={project}
+                className={`rounded-lg p-3 border transition-all duration-500 ${
+                  i <= activeStep
+                    ? "bg-primary/10 border-primary/30 scale-100"
+                    : "bg-[#21262d] border-[#30363d] scale-95 opacity-50"
+                }`}
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <div className={`w-2 h-2 rounded-full ${i <= activeStep ? "bg-primary" : "bg-[#484f58]"}`}></div>
+                  <span className="text-xs text-[#8b949e] truncate">{project}</span>
+                </div>
+                <div className="text-[10px] text-[#6e7681]">
+                  {i <= activeStep ? `${project}.uploadify.do` : "Pendiente..."}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Footer stats */}
+        <div className="px-6 py-4 border-t border-[#30363d] flex flex-wrap items-center justify-center gap-6 text-sm">
+          <div className="flex items-center gap-2">
+            <span className="text-primary font-bold">99.9%</span>
+            <span className="text-[#8b949e]">Uptime</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-primary font-bold">&lt;24h</span>
+            <span className="text-[#8b949e]">Deploy time</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-primary font-bold">SSL</span>
+            <span className="text-[#8b949e]">Incluido</span>
+          </div>
+        </div>
       </div>
     </div>
   )
@@ -182,12 +220,7 @@ export function Hero({ dict, lang }: HeroProps) {
 
         <FadeContent blur duration={1000} delay={800}>
           <div className="mt-20 max-w-4xl mx-auto">
-            <div className="relative rounded-xl border border-border bg-card overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5"></div>
-              <div className="relative p-4 md:p-8">
-                <AnimatedTerminal />
-              </div>
-            </div>
+            <AnimatedServiceFlow />
           </div>
         </FadeContent>
       </div>
