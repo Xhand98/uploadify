@@ -1,0 +1,138 @@
+{
+  "nav": {
+    "howItWorks": "Cómo Funciona",
+    "features": "Características",
+    "pricing": "Precios",
+    "blog": "Blog",
+    "contact": "Contacto",
+    "getStarted": "Comenzar"
+  },
+  "hero": {
+    "badge": "Diseñado especialmente para estudiantes",
+    "title": "De tu computadora al mundo en un clic",
+    "description": "Hosting creado especialmente para estudiantes. Despliegue casi inmediato de tus proyectos con soporte personalizado y precios accesibles.",
+    "ctaPrimary": "Comenzar ahora",
+    "ctaSecondary": "Ver planes semanales",
+    "feature1": "Despliegue rápido",
+    "feature2": "Dominio incluido",
+    "feature3": "Soporte para estudiantes"
+  },
+  "stats": {
+    "uptime": "Uptime garantizado",
+    "deployment": "Despliegue en minutos",
+    "students": "Estudiantes activos",
+    "support": "Soporte"
+  },
+  "features": {
+    "title": "Todo lo que necesitas para hospedar tu proyecto",
+    "description": "Herramientas profesionales y soporte dedicado para que tu proyecto esté online en minutos",
+    "ssl": {
+      "title": "SSL Gratis",
+      "description": "Certificado SSL automático para mantener tu sitio seguro"
+    },
+    "deploy": {
+      "title": "Deploy Rápido",
+      "description": "Sube tu proyecto y estará en línea en minutos"
+    },
+    "support": {
+      "title": "Soporte Dedicado",
+      "description": "Ayuda personalizada cuando la necesites"
+    },
+    "uptime": {
+      "title": "99.9% Uptime",
+      "description": "Tu sitio siempre disponible para tus usuarios"
+    },
+    "backup": {
+      "title": "Backups Automáticos",
+      "description": "Tus datos seguros con respaldos diarios"
+    },
+    "domain": {
+      "title": "Dominio Incluido",
+      "description": "Subdomain gratis o trae tu propio dominio"
+    }
+  },
+  "pricing": {
+    "title": "Planes accesibles para estudiantes",
+    "description": "Paga semanalmente y cancela cuando quieras. Sin compromisos a largo plazo.",
+    "weekly": "semanal",
+    "basic": {
+      "name": "Básico",
+      "price": "299",
+      "description": "Ideal para proyectos personales y prácticas",
+      "features": [
+        "Dominio único (.uploadify.do)",
+        "250MB RAM / 0.5 Core / 1 Thread",
+        "SSL gratuito",
+        "Soporte por email",
+        "Respaldos semanales"
+      ]
+    },
+    "medium": {
+      "name": "Medio",
+      "price": "699",
+      "description": "Perfecto para proyectos universitarios",
+      "popular": "Popular",
+      "features": [
+        "Hasta 3 dominios (.uploadify.do)",
+        "1GB RAM / 1 Core / 2 Threads",
+        "SSL gratuito",
+        "Soporte prioritario",
+        "Respaldos diarios",
+        "Análisis básicos"
+      ]
+    },
+    "advanced": {
+      "name": "Avanzado",
+      "price": "1,499",
+      "description": "Para proyectos con mayor demanda",
+      "features": [
+        "Hasta 10 dominios (.uploadify.do + personalizado)",
+        "2GB RAM / 2 Cores / 4 Threads",
+        "SSL gratuito",
+        "Soporte 24/7 por WhatsApp",
+        "Respaldos diarios",
+        "Análisis avanzados",
+        "CDN incluido"
+      ]
+    },
+    "enterprise": {
+      "name": "Enterprise",
+      "price": "Personalizado",
+      "description": "Para organizaciones y proyectos grandes",
+      "features": [
+        "Dominios ilimitados",
+        "Recursos personalizados",
+        "SSL gratuito",
+        "Soporte dedicado 24/7",
+        "Respaldos en tiempo real",
+        "Análisis empresariales",
+        "CDN premium",
+        "Consultoría técnica"
+      ]
+    },
+    "selectPlan": "Seleccionar plan"
+  },
+  "cta": {
+    "title": "Listo para desplegar tu proyecto?",
+    "description": "Únete a cientos de estudiantes que ya confían en Uploadify para sus proyectos web",
+    "button": "Comenzar gratis"
+  },
+  "footer": {
+    "description": "Hosting profesional para estudiantes en República Dominicana.",
+    "product": "Producto",
+    "company": "Empresa",
+    "aboutUs": "Sobre nosotros",
+    "plans": "Planes",
+    "legal": "Legal",
+    "privacy": "Privacidad",
+    "terms": "Términos",
+    "cookies": "Cookies",
+    "rights": "Todos los derechos reservados.",
+    "features": "Características",
+    "pricing": "Precios",
+    "howItWorks": "Cómo Funciona",
+    "requestPlan": "Solicitar Plan",
+    "blog": "Blog",
+    "contact": "Contacto"
+  }
+}

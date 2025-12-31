@@ -1,115 +1,154 @@
-import { Cloud } from "lucide-react"
+import { HostingLogo } from "@/components/hosting-logo"
+import { Mail, Phone } from "lucide-react"
+import Link from "next/link"
+import type { Locale } from "@/lib/i18n/config"
 
-export function Footer() {
+interface FooterProps {
+  dict: {
+    description: string
+    product: string
+    company: string
+    aboutUs: string
+    plans: string
+    legal: string
+    privacy: string
+    terms: string
+    cookies: string
+    rights: string
+    features: string
+    pricing: string
+    howItWorks: string
+    requestPlan: string
+    blog: string
+    contact: string
+  }
+  lang: Locale
+}
+
+export function Footer({ dict, lang }: FooterProps) {
   return (
-    <footer className="border-t border-border/40 bg-secondary/20 py-12 px-4">
+    <footer className="border-t border-border/40 bg-muted/50 py-12 px-4">
       <div className="container mx-auto">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-                <Cloud className="h-4 w-4 text-primary-foreground" />
-              </div>
-              <span className="text-lg font-bold">Uploadify</span>
+            <Link href={`/${lang}`} className="flex items-center gap-3 mb-4">
+              <HostingLogo className="h-32 w-32" />
+              <span className="text-xl font-bold">Uploadify</span>
+            </Link>
+            <p className="text-sm text-muted-foreground leading-relaxed mb-4">{dict.description}</p>
+            <div className="space-y-2 text-sm text-muted-foreground">
+              <a
+                href="mailto:hendrickherrera9@gmail.com"
+                className="flex items-center gap-2 hover:text-foreground transition-colors"
+              >
+                <Mail className="h-4 w-4" />
+                hendrickherrera9@gmail.com
+              </a>
+              <a href="tel:+18295981500" className="flex items-center gap-2 hover:text-foreground transition-colors">
+                <Phone className="h-4 w-4" />
+                +1 829-598-1500
+              </a>
+              <span className="flex items-center gap-2 font-medium text-foreground">Hendrick Herrera</span>
             </div>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Hosting profesional para tu negocio en República Dominicana.
-            </p>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Producto</h3>
+            <h3 className="font-semibold mb-4">{dict.product}</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Características
-                </a>
+                <Link href={`/${lang}/caracteristicas`} className="hover:text-foreground transition-colors">
+                  {dict.features}
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Precios
-                </a>
+                <Link href={`/${lang}/precios`} className="hover:text-foreground transition-colors">
+                  {dict.pricing}
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Documentación
-                </a>
+                <Link href={`/${lang}/como-funciona`} className="hover:text-foreground transition-colors">
+                  {dict.howItWorks}
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  API
-                </a>
+                <Link href={`/${lang}/solicitar`} className="hover:text-foreground transition-colors">
+                  {dict.requestPlan}
+                </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Empresa</h3>
+            <h3 className="font-semibold mb-4">{dict.company}</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Sobre nosotros
-                </a>
+                <Link href={`/${lang}/como-funciona`} className="hover:text-foreground transition-colors">
+                  {dict.aboutUs}
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Blog
-                </a>
+                <Link href={`/${lang}/blog`} className="hover:text-foreground transition-colors">
+                  {dict.blog}
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Carreras
-                </a>
+                <Link href={`/${lang}/precios`} className="hover:text-foreground transition-colors">
+                  {dict.plans}
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Contacto
-                </a>
+                <Link href={`/${lang}/contacto`} className="hover:text-foreground transition-colors">
+                  {dict.contact}
+                </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Legal</h3>
+            <h3 className="font-semibold mb-4">{dict.legal}</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Privacidad
-                </a>
+                <Link href={`/${lang}/privacidad`} className="hover:text-foreground transition-colors">
+                  {dict.privacy}
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Términos
-                </a>
+                <Link href={`/${lang}/terminos`} className="hover:text-foreground transition-colors">
+                  {dict.terms}
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
+                <Link href={`/${lang}/sla`} className="hover:text-foreground transition-colors">
                   SLA
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="hover:text-foreground transition-colors">
-                  Cookies
-                </a>
+                <Link href={`/${lang}/cookies`} className="hover:text-foreground transition-colors">
+                  {dict.cookies}
+                </Link>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="pt-8 border-t border-border/40 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-muted-foreground">
-          <p>&copy; 2025 Uploadify. Todos los derechos reservados.</p>
+          <p>&copy; 2025 Uploadify. Hendrick Herrera. {dict.rights}</p>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-foreground transition-colors">
-              Twitter
-            </a>
-            <a href="#" className="hover:text-foreground transition-colors">
-              Facebook
-            </a>
-            <a href="#" className="hover:text-foreground transition-colors">
+            <a
+              href="https://instagram.com/hendrick.german"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
+            >
               Instagram
             </a>
-            <a href="#" className="hover:text-foreground transition-colors">
-              LinkedIn
+            <a
+              href="https://tiktok.com/@xhand98"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foreground transition-colors"
+            >
+              TikTok
             </a>
           </div>
         </div>
