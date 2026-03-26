@@ -55,7 +55,7 @@
 - **Package Manager**: `pnpm` (recommended)
 
 ### 2. Installation
-```bash
+\`\`\`bash
 # Clone the repository
 git clone https://github.com/your-username/uploadify.git
 
@@ -64,18 +64,18 @@ cd uploadify
 
 # Install dependencies
 pnpm install
-```
+\`\`\`
 
 ### 3. Environment Setup
 Create a `.env.local` file in the root directory:
-```bash
+\`\`\`bash
 cp .env.example .env.local
-```
+\`\`\`
 Fill in your Supabase credentials:
-```env
+\`\`\`env
 NEXT_PUBLIC_SUPABASE_URL=your_project_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key
-```
+\`\`\`
 
 ### 4. Database Initialization
 Execute the SQL scripts in your Supabase SQL Editor:
@@ -83,16 +83,16 @@ Execute the SQL scripts in your Supabase SQL Editor:
 2. `scripts/002_create_blog_posts_table.sql`
 
 ### 5. Launch
-```bash
+\`\`\`bash
 pnpm dev
-```
+\`\`\`
 Visit [http://localhost:3000](http://localhost:3000) to see your app in action!
 
 ---
 
 ## 📁 Project Structure
 
-```text
+\`\`\`text
 ├── app/                # Next.js App Router (Pages & Layouts)
 │   ├── [lang]/         # I18n routes
 │   └── admin/          # Admin Dashboard
@@ -104,7 +104,7 @@ Visit [http://localhost:3000](http://localhost:3000) to see your app in action!
 │   └── supabase/       # Database clients
 ├── scripts/            # SQL Database migrations
 └── styles/             # Global CSS & Tailwind
-```
+\`\`\`
 
 ---
 
