@@ -73,7 +73,7 @@ export function Features({ dict }: FeaturesProps) {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
             <FadeContent key={index} blur duration={600} delay={index * 100}>
-              <Card className="border-border/50 hover:border-primary/50 transition-colors h-full">
+              <Card className="border-border bg-card hover:border-foreground/40 transition-colors h-full">
                 <CardContent className="p-6">
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4">
                     <feature.icon className="h-6 w-6" />

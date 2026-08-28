@@ -42,7 +42,7 @@ export function Stats({ dict }: StatsProps) {
   ]
 
   return (
-    <section className="py-20 px-4 bg-secondary/30">
+    <section className="border-y border-border py-20 px-4 bg-secondary/40">
       <div className="container mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (

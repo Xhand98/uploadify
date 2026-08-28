@@ -43,7 +43,7 @@ function AnimatedServiceFlow() {
   return (
     <div className="w-full">
       {/* Main visualization card */}
-      <div className="rounded-2xl bg-gradient-to-br from-[#0d1117] to-[#161b22] border border-[#30363d] overflow-hidden shadow-2xl">
+      <div className="rounded-lg bg-card border border-border overflow-hidden shadow-sm">
         {/* Header */}
         <div className="px-6 py-4 border-b border-[#30363d] flex items-center justify-between">
           <div className="flex items-center gap-3">
@@ -73,7 +73,7 @@ function AnimatedServiceFlow() {
                   <div
                     className={`relative w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 ${
                       isActive
-                        ? "bg-primary/20 scale-110 shadow-lg shadow-primary/20"
+                        ? "bg-primary/10 scale-105"
                         : isCompleted
                           ? "bg-primary/10"
                           : "bg-[#21262d]"
