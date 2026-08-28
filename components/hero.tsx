@@ -28,7 +28,7 @@ function AnimatedServiceFlow() {
   const [activeStep, setActiveStep] = useState(0)
 
   const steps = [
-    { icon: Upload, label: "Envías tu proyecto", color: "text-blue-400" },
+    { icon: Upload, label: "Envías tu proyecto", color: "text-primary" },
     { icon: Zap, label: "Nosotros lo procesamos", color: "text-yellow-400" },
     { icon: Server, label: "Configuramos servidor", color: "text-purple-400" },
     { icon: Globe, label: "¡Tu web está online!", color: "text-primary" },
@@ -157,15 +157,21 @@ function AnimatedServiceFlow() {
 
 export function Hero({ dict, lang }: HeroProps) {
   return (
-    <section className="pt-32 pb-20 px-4">
+    <section className="border-b border-border px-4 pb-20 pt-32">
       <div className="container mx-auto">
-          <div className="max-w-4xl mx-auto text-center">
+        <div className="grid items-center gap-14 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
+          <div className="max-w-xl">
           <FadeContent blur duration={600} delay={100}>
-            <div className="mx-auto mb-6 flex items-center justify-center gap-3 text-sm font-medium text-primary">
-              <Image src="/bloub-mascot.svg" alt="Mascota animada de Uploadify" width={72} height={72} priority className="size-16" />
-              <span className="sr-only">Uploadify te acompaña</span>
+            <div className="mb-8 flex items-center gap-4">
+              <Image src="/bloub-mascot.svg" alt="Mascota animada de Uploadify" width={88} height={88} priority className="size-20" />
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-primary">Uploadify</p>
+                <p className="mt-1 text-sm text-muted-foreground">Tu proyecto, listo para compartir.</p>
+              </div>
             </div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary mb-6">
+          </FadeContent>
+          <FadeContent blur duration={600} delay={100}>
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
@@ -221,13 +227,14 @@ export function Hero({ dict, lang }: HeroProps) {
               </div>
             </div>
           </FadeContent>
-        </div>
-
-        <FadeContent blur duration={1000} delay={800}>
-          <div className="mt-20 max-w-4xl mx-auto">
-            <AnimatedServiceFlow />
           </div>
-        </FadeContent>
+
+          <FadeContent blur duration={1000} delay={800}>
+            <div className="lg:pl-4">
+              <AnimatedServiceFlow />
+            </div>
+          </FadeContent>
+        </div>
       </div>
     </section>
   )
