@@ -84,8 +84,6 @@ function AnimatedServiceFlow() {
                         isActive ? step.color : isCompleted ? "text-primary/60" : "text-muted-foreground"
                       }`}
                     />
-                    {isActive && (
-                    )}
                   </div>
                   <span
                     className={`text-sm font-medium transition-colors duration-300 text-center ${
