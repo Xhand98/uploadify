@@ -27,125 +27,55 @@ function AnimatedServiceFlow() {
   const [activeStep, setActiveStep] = useState(0)
 
   const steps = [
-    { icon: Upload, label: "Envías tu proyecto", color: "text-foreground" },
-    { icon: Zap, label: "Nosotros lo procesamos", color: "text-foreground" },
-    { icon: Server, label: "Configuramos servidor", color: "text-foreground" },
-    { icon: Globe, label: "Tu web está online", color: "text-foreground" },
+    { icon: Upload, eyebrow: "01", label: "Sube tu proyecto", detail: "Un archivo .zip es suficiente" },
+    { icon: Zap, eyebrow: "02", label: "Revisamos y preparamos", detail: "Detectamos lo que necesita" },
+    { icon: Globe, eyebrow: "03", label: "Publica y comparte", detail: "Tu enlace queda listo" },
   ]
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveStep((prev) => (prev + 1) % steps.length)
-    }, 2000)
+    const interval = setInterval(() => setActiveStep((prev) => (prev + 1) % steps.length), 2400)
     return () => clearInterval(interval)
   }, [])
 
   return (
-    <div className="w-full">
-      {/* Main visualization card */}
-      <div className="rounded-xl bg-card border border-border overflow-hidden shadow-xl">
-        {/* Header */}
-        <div className="px-6 py-4 border-b border-border flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="size-10 rounded-lg bg-secondary flex items-center justify-center">
-              <span className="text-primary font-bold text-lg">U</span>
-            </div>
-            <span className="text-foreground font-semibold">Uploadify Flow</span>
-          </div>
-          <div className="flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-muted-foreground"></div>
-            <div className="w-3 h-3 rounded-full bg-muted-foreground"></div>
-            <div className="w-3 h-3 rounded-full bg-primary"></div>
-          </div>
+    <div className="w-full rounded-xl border border-border bg-card p-6 shadow-xl md:p-8" aria-label="Flujo de publicación de Uploadify">
+      <div className="flex flex-col gap-2 border-b border-border pb-6 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Uploadify / deploy</p>
+          <h2 className="mt-2 text-xl font-semibold tracking-tight">De archivo a web publicada</h2>
         </div>
+        <p className="font-mono text-xs text-muted-foreground" aria-live="polite">Paso {activeStep + 1} de {steps.length}</p>
+      </div>
 
-        {/* Flow visualization */}
-        <div className="p-8 md:p-12">
-          {/* Steps */}
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 mb-8">
-            {steps.map((step, index) => {
-              const Icon = step.icon
-              const isActive = index === activeStep
-              const isCompleted = index < activeStep
-
-              return (
-                <div key={index} className="flex items-center gap-4 md:flex-col md:gap-3">
-                  <div
-                    className={`relative w-16 h-16 rounded-2xl flex items-center justify-center transition-all duration-500 ${
-                      isActive
-                        ? "bg-primary/20 scale-110 shadow-lg shadow-primary/20"
-                        : isCompleted
-                          ? "bg-primary/10"
-                          : "bg-secondary"
-                    }`}
-                  >
-                    <Icon
-                      className={`w-7 h-7 transition-all duration-500 ${
-                        isActive ? step.color : isCompleted ? "text-primary/60" : "text-muted-foreground"
-                      }`}
-                    />
-                  </div>
-                  <span
-                    className={`text-sm font-medium transition-colors duration-300 text-center ${
-                      isActive ? "text-foreground" : "text-muted-foreground"
-                    }`}
-                  >
-                    {step.label}
-                  </span>
-
-                  {/* Connector line (hidden on last item) */}
-                  {index < steps.length - 1 && (
-                    <div className="hidden md:block w-12 lg:w-20 h-0.5 bg-[#30363d] relative mx-2">
-                      <div
-                        className={`absolute inset-y-0 left-0 bg-primary transition-all duration-500 ${
-                          index < activeStep ? "w-full" : "w-0"
-                        }`}
-                      ></div>
-                    </div>
-                  )}
+      <div className="mt-8 flex flex-col gap-6 md:flex-row md:items-start md:gap-0">
+        {steps.map((step, index) => {
+          const Icon = step.icon
+          const isActive = index === activeStep
+          const isComplete = index < activeStep
+          return (
+            <div key={step.label} className="flex flex-1 items-start gap-4 md:block">
+              <div className="flex items-center md:items-start">
+                <div className={`flex size-12 shrink-0 items-center justify-center rounded-lg border transition-colors duration-500 ${isActive ? "border-primary bg-primary text-primary-foreground" : isComplete ? "border-primary/40 bg-secondary text-foreground" : "border-border bg-secondary text-muted-foreground"}`}>
+                  {isComplete ? <CheckCircle className="size-5" aria-hidden="true" /> : <Icon className="size-5" aria-hidden="true" />}
                 </div>
-              )
-            })}
-          </div>
-
-          {/* Simulated project cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {["mi-portfolio", "tienda-online", "blog-personal", "app-tareas"].map((project, i) => (
-              <div
-                key={project}
-                className={`rounded-lg p-3 border transition-all duration-500 ${
-                  i <= activeStep
-                    ? "bg-primary/10 border-primary/30 scale-100"
-                    : "bg-secondary border-border scale-95 opacity-50"
-                }`}
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <div className={`w-2 h-2 rounded-full ${i <= activeStep ? "bg-primary" : "bg-[#484f58]"}`}></div>
-                  <span className="text-xs text-muted-foreground truncate">{project}</span>
-                </div>
-                <div className="text-[10px] text-muted-foreground">
-                  {i <= activeStep ? `${project}.uploadify.do` : "Pendiente..."}
-                </div>
+                {index < steps.length - 1 && <div className="hidden h-px w-full bg-border md:mx-4 md:mt-6 md:block"><div className={`h-full bg-primary transition-all duration-700 ${index < activeStep ? "w-full" : "w-0"}`} /></div>}
               </div>
-            ))}
-          </div>
-        </div>
+              <div className="md:mt-4">
+                <p className="font-mono text-xs text-muted-foreground">{step.eyebrow}</p>
+                <p className={`mt-1 font-medium ${isActive ? "text-foreground" : "text-muted-foreground"}`}>{step.label}</p>
+                <p className="mt-1 text-sm leading-6 text-muted-foreground">{step.detail}</p>
+              </div>
+            </div>
+          )
+        })}
+      </div>
 
-        {/* Footer stats */}
-        <div className="px-6 py-4 border-t border-border flex flex-wrap items-center justify-center gap-6 text-sm">
-          <div className="flex items-center gap-2">
-            <span className="text-primary font-bold">99.9%</span>
-            <span className="text-muted-foreground">Uptime</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-primary font-bold">&lt;24h</span>
-            <span className="text-muted-foreground">Deploy time</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-primary font-bold">SSL</span>
-            <span className="text-muted-foreground">Incluido</span>
-          </div>
+      <div className="mt-8 flex flex-col gap-4 rounded-lg border border-border bg-secondary/60 p-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center gap-3">
+          <div className="flex size-9 items-center justify-center rounded-md bg-primary text-primary-foreground"><Globe className="size-4" aria-hidden="true" /></div>
+          <div><p className="text-sm font-medium">mi-portfolio.uploadify.do</p><p className="font-mono text-xs text-muted-foreground">HTTPS · listo para compartir</p></div>
         </div>
+        <span className="inline-flex items-center gap-2 text-sm font-medium text-foreground"><span className="size-2 rounded-full bg-primary" aria-hidden="true" />Publicado</span>
       </div>
     </div>
   )
