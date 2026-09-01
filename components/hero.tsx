@@ -27,10 +27,10 @@ function AnimatedServiceFlow() {
   const [activeStep, setActiveStep] = useState(0)
 
   const steps = [
-    { icon: Upload, label: "Envías tu proyecto", color: "text-blue-400" },
-    { icon: Zap, label: "Nosotros lo procesamos", color: "text-yellow-400" },
-    { icon: Server, label: "Configuramos servidor", color: "text-purple-400" },
-    { icon: Globe, label: "¡Tu web está online!", color: "text-primary" },
+    { icon: Upload, label: "Envías tu proyecto", color: "text-foreground" },
+    { icon: Zap, label: "Nosotros lo procesamos", color: "text-foreground" },
+    { icon: Server, label: "Configuramos servidor", color: "text-foreground" },
+    { icon: Globe, label: "Tu web está online", color: "text-foreground" },
   ]
 
   useEffect(() => {
@@ -43,19 +43,19 @@ function AnimatedServiceFlow() {
   return (
     <div className="w-full">
       {/* Main visualization card */}
-      <div className="rounded-2xl bg-gradient-to-br from-[#0d1117] to-[#161b22] border border-[#30363d] overflow-hidden shadow-2xl">
+      <div className="rounded-xl bg-card border border-border overflow-hidden shadow-xl">
         {/* Header */}
-        <div className="px-6 py-4 border-b border-[#30363d] flex items-center justify-between">
+        <div className="px-6 py-4 border-b border-border flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
+            <div className="size-10 rounded-lg bg-secondary flex items-center justify-center">
               <span className="text-primary font-bold text-lg">U</span>
             </div>
-            <span className="text-white font-semibold">Uploadify Flow</span>
+            <span className="text-foreground font-semibold">Uploadify Flow</span>
           </div>
           <div className="flex gap-2">
-            <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-            <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-            <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+            <div className="w-3 h-3 rounded-full bg-muted-foreground"></div>
+            <div className="w-3 h-3 rounded-full bg-muted-foreground"></div>
+            <div className="w-3 h-3 rounded-full bg-primary"></div>
           </div>
         </div>
 
@@ -76,21 +76,20 @@ function AnimatedServiceFlow() {
                         ? "bg-primary/20 scale-110 shadow-lg shadow-primary/20"
                         : isCompleted
                           ? "bg-primary/10"
-                          : "bg-[#21262d]"
+                          : "bg-secondary"
                     }`}
                   >
                     <Icon
                       className={`w-7 h-7 transition-all duration-500 ${
-                        isActive ? step.color : isCompleted ? "text-primary/60" : "text-[#484f58]"
+                        isActive ? step.color : isCompleted ? "text-primary/60" : "text-muted-foreground"
                       }`}
                     />
                     {isActive && (
-                      <span className="absolute inset-0 rounded-2xl animate-ping bg-primary/20 opacity-75"></span>
                     )}
                   </div>
                   <span
                     className={`text-sm font-medium transition-colors duration-300 text-center ${
-                      isActive ? "text-white" : "text-[#8b949e]"
+                      isActive ? "text-foreground" : "text-muted-foreground"
                     }`}
                   >
                     {step.label}
@@ -119,14 +118,14 @@ function AnimatedServiceFlow() {
                 className={`rounded-lg p-3 border transition-all duration-500 ${
                   i <= activeStep
                     ? "bg-primary/10 border-primary/30 scale-100"
-                    : "bg-[#21262d] border-[#30363d] scale-95 opacity-50"
+                    : "bg-secondary border-border scale-95 opacity-50"
                 }`}
               >
                 <div className="flex items-center gap-2 mb-2">
                   <div className={`w-2 h-2 rounded-full ${i <= activeStep ? "bg-primary" : "bg-[#484f58]"}`}></div>
-                  <span className="text-xs text-[#8b949e] truncate">{project}</span>
+                  <span className="text-xs text-muted-foreground truncate">{project}</span>
                 </div>
-                <div className="text-[10px] text-[#6e7681]">
+                <div className="text-[10px] text-muted-foreground">
                   {i <= activeStep ? `${project}.uploadify.do` : "Pendiente..."}
                 </div>
               </div>
@@ -135,18 +134,18 @@ function AnimatedServiceFlow() {
         </div>
 
         {/* Footer stats */}
-        <div className="px-6 py-4 border-t border-[#30363d] flex flex-wrap items-center justify-center gap-6 text-sm">
+        <div className="px-6 py-4 border-t border-border flex flex-wrap items-center justify-center gap-6 text-sm">
           <div className="flex items-center gap-2">
             <span className="text-primary font-bold">99.9%</span>
-            <span className="text-[#8b949e]">Uptime</span>
+            <span className="text-muted-foreground">Uptime</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-primary font-bold">&lt;24h</span>
-            <span className="text-[#8b949e]">Deploy time</span>
+            <span className="text-muted-foreground">Deploy time</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="text-primary font-bold">SSL</span>
-            <span className="text-[#8b949e]">Incluido</span>
+            <span className="text-muted-foreground">Incluido</span>
           </div>
         </div>
       </div>
@@ -161,10 +160,7 @@ export function Hero({ dict, lang }: HeroProps) {
         <div className="max-w-4xl mx-auto text-center">
           <FadeContent blur duration={600} delay={100}>
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary mb-6">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-              </span>
+              <span className="size-2 rounded-full bg-primary" aria-hidden="true"></span>
               {dict.badge}
             </div>
           </FadeContent>

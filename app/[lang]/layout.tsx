@@ -1,21 +1,21 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Geist } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import "../globals.css"
 import { i18n, type Locale } from "@/lib/i18n/config"
 
-const inter = Inter({ subsets: ["latin"] })
+const geist = Geist({ subsets: ["latin"] })
 
 export async function generateStaticParams() {
   return i18n.locales.map((locale) => ({ lang: locale }))
 }
 
 export const metadata: Metadata = {
-  title: "Uploadify - Hosting Rápido y Confiable",
+  title: "Uploadify — Hosting simple para proyectos reales",
   description:
-    "Hosting profesional en República Dominicana con planes desde RD$ 299/mes. Velocidad, seguridad y soporte 24/7.",
+    "Despliega tu proyecto sin fricción. Hosting rápido, seguro y acompañado para estudiantes y equipos pequeños.",
   generator: "v0.app",
   icons: {
     icon: [
@@ -46,8 +46,8 @@ export default async function RootLayout({
   const { lang } = await params
 
   return (
-    <html lang={lang}>
-      <body className={`${inter.className} antialiased`}>
+    <html lang={lang} className="bg-background">
+      <body className={`${geist.className} antialiased`}>
         {children}
         <Analytics />
         <SpeedInsights />

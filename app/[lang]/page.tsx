@@ -19,7 +19,6 @@ export default async function Home({
   return (
     <main className="min-h-screen">
       <Header lang={lang} dict={dict.nav} />
-      HELLOOOOO
       <Hero dict={dict.hero} lang={lang} />
       <Stats dict={dict.stats} />
       <Features dict={dict.features} />

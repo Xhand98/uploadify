@@ -21,10 +21,8 @@ export function CTA({ dict, lang }: CTAProps) {
     <section className="py-24 px-4">
       <div className="container mx-auto">
         <FadeContent blur duration={800}>
-          <div className="relative overflow-hidden rounded-2xl bg-primary p-12 md:p-16">
-            <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-accent opacity-90"></div>
-
-            <div className="relative z-10 max-w-3xl mx-auto text-center">
+          <div className="relative overflow-hidden rounded-xl bg-primary p-10 md:p-16">
+            <div className="relative max-w-3xl mx-auto text-center">
               <h2 className="text-4xl md:text-5xl font-bold text-primary-foreground mb-6 text-balance">
                 <SplitText
                   text={dict.title}
