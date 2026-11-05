@@ -16,7 +16,6 @@ export const metadata: Metadata = {
   title: "Uploadify - Hosting Rápido y Confiable",
   description:
     "Hosting profesional en República Dominicana con planes desde RD$ 299/mes. Velocidad, seguridad y soporte 24/7.",
-  generator: "v0.app",
   icons: {
     icon: [
       {
