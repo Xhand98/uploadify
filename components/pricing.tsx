@@ -3,7 +3,7 @@
 import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+
 import FadeContent from "@/components/reactbits/fade-content"
 import SplitText from "@/components/reactbits/split-text"
 import Link from "next/link"
@@ -60,8 +60,7 @@ export function Pricing({ dict, lang }: PricingProps) {
       name: dict.medium.name,
       price: dict.medium.price,
       description: dict.medium.description,
-      popular: true,
-      popularLabel: dict.medium.popular,
+      popular: false,
       specs: "1GB • 1C • 2T",
       features: dict.medium.features,
     },
@@ -107,13 +106,9 @@ export function Pricing({ dict, lang }: PricingProps) {
           {plans.map((plan, index) => (
             <FadeContent key={index} blur duration={700} delay={index * 150}>
               <Card
-                className={`relative flex flex-col w-[280px] min-w-[260px] ${plan.popular ? "border-primary shadow-lg scale-105 z-10" : "border-border/50"}`}
+                className="relative flex flex-col w-[280px] min-w-[260px] border-border/50"
               >
-                {plan.popular && (
-                  <div className="absolute -top-4 left-0 right-0 flex justify-center">
-                    <Badge className="bg-primary text-primary-foreground whitespace-nowrap">{plan.popularLabel}</Badge>
-                  </div>
-                )}
+
 
                 <CardHeader className="pb-3">
                   <CardTitle className="text-xl">{plan.name}</CardTitle>
@@ -149,7 +144,7 @@ export function Pricing({ dict, lang }: PricingProps) {
                 </CardContent>
 
                 <CardFooter className="pt-4">
-                  <Button className="w-full" size="sm" variant={plan.popular ? "default" : "outline"} asChild>
+                  <Button className="w-full" size="sm" variant="outline" asChild>
                     <Link
                       href={
                         plan.price === dict.enterprise.price
