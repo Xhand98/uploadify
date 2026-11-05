@@ -6,6 +6,7 @@ import SplitText from "@/components/reactbits/split-text"
 import BlurText from "@/components/reactbits/blur-text"
 import FadeContent from "@/components/reactbits/fade-content"
 import Link from "next/link"
+import Image from "next/image"
 import type { Locale } from "@/lib/i18n/config"
 import { useEffect, useState } from "react"
 
@@ -219,7 +220,17 @@ export function Hero({ dict, lang }: HeroProps) {
         </div>
 
         <FadeContent blur duration={1000} delay={800}>
-          <div className="lg:mt-0">
+          <div className="lg:mt-0 space-y-8">
+            <figure className="overflow-hidden rounded-2xl border border-border/60 bg-card shadow-2xl shadow-primary/5">
+              <Image
+                src="/modern-hosting-control-panel-dashboard-with-server.jpg"
+                alt="Panel de control de Uploadify con métricas y estado del servidor"
+                width={1600}
+                height={1000}
+                className="h-auto w-full object-cover"
+                priority
+              />
+            </figure>
             <AnimatedServiceFlow />
           </div>
         </FadeContent>
