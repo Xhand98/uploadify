@@ -1,7 +1,6 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
 import FadeContent from "@/components/reactbits/fade-content"
 import SplitText from "@/components/reactbits/split-text"
 import Link from "next/link"
@@ -41,7 +40,7 @@ export function CTA({ dict, lang }: CTAProps) {
                 <Button size="lg" variant="secondary" className="text-base px-8 group" asChild>
                   <Link href={`/${lang}/solicitar`}>
                     {dict.button}
-                    <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    <span className="ml-2 text-sm transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
                   </Link>
                 </Button>
               </div>

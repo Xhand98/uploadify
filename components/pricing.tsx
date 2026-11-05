@@ -1,6 +1,5 @@
 "use client"
 
-import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -136,7 +135,7 @@ export function Pricing({ dict, lang }: PricingProps) {
                   <ul className="space-y-2">
                     {plan.features.map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-start gap-2">
-                        <Check className="h-4 w-4 text-primary shrink-0 mt-0.5" />
+                        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" aria-hidden="true" />
                         <span className="text-xs text-foreground/80 leading-tight">{feature}</span>
                       </li>
                     ))}

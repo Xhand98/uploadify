@@ -1,6 +1,5 @@
 "use client"
 
-import { Server, Shield, Zap, HeadphonesIcon, Database, Lock } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
 import FadeContent from "@/components/reactbits/fade-content"
 import SplitText from "@/components/reactbits/split-text"
@@ -21,32 +20,32 @@ interface FeaturesProps {
 export function Features({ dict }: FeaturesProps) {
   const features = [
     {
-      icon: Zap,
+      marker: "01",
       title: dict.deploy.title,
       description: dict.deploy.description,
     },
     {
-      icon: Shield,
+      marker: "02",
       title: dict.ssl.title,
       description: dict.ssl.description,
     },
     {
-      icon: Server,
+      marker: "03",
       title: dict.uptime.title,
       description: dict.uptime.description,
     },
     {
-      icon: HeadphonesIcon,
+      marker: "04",
       title: dict.support.title,
       description: dict.support.description,
     },
     {
-      icon: Database,
+      marker: "05",
       title: dict.backup.title,
       description: dict.backup.description,
     },
     {
-      icon: Lock,
+      marker: "06",
       title: dict.domain.title,
       description: dict.domain.description,
     },
@@ -76,7 +75,7 @@ export function Features({ dict }: FeaturesProps) {
               <Card className="border-border/50 hover:border-primary/50 transition-colors h-full">
                 <CardContent className="p-6">
                   <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 text-primary mb-4">
-                    <feature.icon className="h-6 w-6" />
+                    <span className="font-mono text-xs font-semibold tracking-wider text-primary">{feature.marker}</span>
                   </div>
                   <h3 className="text-xl font-semibold mb-2">{feature.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{feature.description}</p>

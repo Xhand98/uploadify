@@ -1,7 +1,6 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, CheckCircle, Upload, Server, Globe, Zap } from "lucide-react"
 import SplitText from "@/components/reactbits/split-text"
 import BlurText from "@/components/reactbits/blur-text"
 import FadeContent from "@/components/reactbits/fade-content"
@@ -28,10 +27,10 @@ function AnimatedServiceFlow() {
   const [activeStep, setActiveStep] = useState(0)
 
   const steps = [
-    { icon: Upload, label: "Envías tu proyecto", color: "text-blue-400" },
-    { icon: Zap, label: "Nosotros lo procesamos", color: "text-yellow-400" },
-    { icon: Server, label: "Configuramos servidor", color: "text-purple-400" },
-    { icon: Globe, label: "¡Tu web está online!", color: "text-primary" },
+    { label: "Envías tu proyecto", color: "text-blue-400" },
+    { label: "Nosotros lo procesamos", color: "text-yellow-400" },
+    { label: "Configuramos servidor", color: "text-purple-400" },
+    { label: "¡Tu web está online!", color: "text-primary" },
   ]
 
   useEffect(() => {
@@ -65,7 +64,6 @@ function AnimatedServiceFlow() {
           {/* Steps */}
           <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-4 mb-8">
             {steps.map((step, index) => {
-              const Icon = step.icon
               const isActive = index === activeStep
               const isCompleted = index < activeStep
 
@@ -80,11 +78,9 @@ function AnimatedServiceFlow() {
                           : "bg-[#21262d]"
                     }`}
                   >
-                    <Icon
-                      className={`w-7 h-7 transition-all duration-500 ${
-                        isActive ? step.color : isCompleted ? "text-primary/60" : "text-[#484f58]"
-                      }`}
-                    />
+                    <span className={`font-mono text-lg font-semibold transition-all duration-500 ${
+                      isActive ? step.color : isCompleted ? "text-primary/60" : "text-[#484f58]"
+                    }`}>{String(index + 1).padStart(2, "0")}</span>
                     {isActive && (
                       <span className="absolute inset-0 rounded-2xl animate-ping bg-primary/20 opacity-75"></span>
                     )}
@@ -192,7 +188,7 @@ export function Hero({ dict, lang }: HeroProps) {
               <Button size="lg" className="text-base px-8 group" asChild>
                 <Link href={`/${lang}/solicitar`}>
                   {dict.ctaPrimary}
-                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  <span className="ml-2 text-sm transition-transform group-hover:translate-x-1" aria-hidden="true">→</span>
                 </Link>
               </Button>
               <Button size="lg" variant="outline" className="text-base px-8 bg-transparent" asChild>
@@ -204,15 +200,15 @@ export function Hero({ dict, lang }: HeroProps) {
           <FadeContent blur duration={800} delay={600}>
             <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-primary" />
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
                 <span>{dict.feature1}</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-primary" />
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
                 <span>{dict.feature2}</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle className="h-4 w-4 text-primary" />
+                <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
                 <span>{dict.feature3}</span>
               </div>
             </div>
