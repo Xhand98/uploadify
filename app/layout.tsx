@@ -7,9 +7,13 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'Uploadify | Hosting simple para tus proyectos',
+  description: 'Publica y administra tus proyectos web con un hosting rápido, sencillo y pensado para estudiantes y equipos pequeños.',
+  openGraph: {
+    title: 'Uploadify | Hosting simple para tus proyectos',
+    description: 'Publica y administra tus proyectos web con un hosting rápido, sencillo y pensado para estudiantes y equipos pequeños.',
+    images: ['/banner.svg'],
+  },
   icons: {
     icon: [
       {
@@ -27,6 +31,7 @@ export const metadata: Metadata = {
     ],
     apple: '/apple-icon.png',
   },
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
