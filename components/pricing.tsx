@@ -88,7 +88,7 @@ export function Pricing({ dict, lang }: PricingProps) {
   return (
     <section id="pricing" className="py-24 px-4 bg-secondary/30">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
+        <div className="mb-16 max-w-3xl">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
             <SplitText
               text={dict.title}
@@ -100,10 +100,10 @@ export function Pricing({ dict, lang }: PricingProps) {
               to={{ opacity: 1, y: 0 }}
             />
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">{dict.description}</p>
+          <p className="text-xl text-muted-foreground max-w-2xl text-pretty">{dict.description}</p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-6 max-w-7xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl">
           {plans.map((plan, index) => (
             <FadeContent key={index} blur duration={700} delay={index * 150}>
               <Card
@@ -167,7 +167,7 @@ export function Pricing({ dict, lang }: PricingProps) {
         </div>
 
         <FadeContent blur duration={600} delay={700}>
-          <div className="mt-12 text-center text-sm text-muted-foreground">
+          <div className="mt-12 text-left text-sm text-muted-foreground">
             Todos los planes incluyen despliegue asistido y soporte para estudiantes
           </div>
         </FadeContent>

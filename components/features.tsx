@@ -55,7 +55,7 @@ export function Features({ dict }: FeaturesProps) {
   return (
     <section id="features" className="py-24 px-4">
       <div className="container mx-auto">
-        <div className="text-center mb-16">
+        <div className="mb-16 max-w-3xl">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 text-balance">
             <SplitText
               text={dict.title}
@@ -67,7 +67,7 @@ export function Features({ dict }: FeaturesProps) {
               to={{ opacity: 1, y: 0 }}
             />
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">{dict.description}</p>
+          <p className="text-xl text-muted-foreground max-w-2xl text-pretty">{dict.description}</p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

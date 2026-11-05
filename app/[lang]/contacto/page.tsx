@@ -65,7 +65,7 @@ export default async function ContactPage({
       <Header lang={lang} dict={dict.nav} />
       <main className="flex-1 pt-24 pb-16">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="mb-16 max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               <SplitText
                 text={pageTitle}
@@ -77,7 +77,7 @@ export default async function ContactPage({
                 to={{ opacity: 1, y: 0 }}
               />
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{pageDescription}</p>
+            <p className="text-xl text-muted-foreground max-w-2xl">{pageDescription}</p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 max-w-5xl mx-auto">

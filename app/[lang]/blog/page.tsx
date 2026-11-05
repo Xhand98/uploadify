@@ -33,14 +33,14 @@ export default async function BlogPage({ params }: { params: Promise<{ lang: Loc
 
       <main className="pt-24 pb-16">
         <section className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="mb-12 max-w-3xl">
             <Badge variant="secondary" className="mb-4">
               Blog
             </Badge>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               <SplitText text={lang === "es" ? "Noticias y Tutoriales" : "News and Tutorials"} />
             </h1>
-            <div className="max-w-2xl mx-auto">
+            <div className="max-w-2xl">
               <BlurText
                 text={
                   lang === "es"

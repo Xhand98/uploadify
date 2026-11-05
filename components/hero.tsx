@@ -158,7 +158,7 @@ export function Hero({ dict, lang }: HeroProps) {
   return (
     <section className="pt-32 pb-20 px-4">
       <div className="container mx-auto">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-12 items-center">
           <FadeContent blur duration={600} delay={100}>
             <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary mb-6">
               <span className="relative flex h-2 w-2">
@@ -187,7 +187,7 @@ export function Hero({ dict, lang }: HeroProps) {
           </div>
 
           <FadeContent blur duration={800} delay={400}>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
+            <div className="flex flex-col sm:flex-row items-start gap-4 mb-12">
               <Button size="lg" className="text-base px-8 group" asChild>
                 <Link href={`/${lang}/solicitar`}>
                   {dict.ctaPrimary}
@@ -201,7 +201,7 @@ export function Hero({ dict, lang }: HeroProps) {
           </FadeContent>
 
           <FadeContent blur duration={800} delay={600}>
-            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground">
+            <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <CheckCircle className="h-4 w-4 text-primary" />
                 <span>{dict.feature1}</span>
@@ -219,7 +219,7 @@ export function Hero({ dict, lang }: HeroProps) {
         </div>
 
         <FadeContent blur duration={1000} delay={800}>
-          <div className="mt-20 max-w-4xl mx-auto">
+          <div className="lg:mt-0">
             <AnimatedServiceFlow />
           </div>
         </FadeContent>

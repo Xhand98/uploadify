@@ -124,8 +124,8 @@ export default async function PricingPage({
         <Pricing dict={dict.pricing} lang={lang} />
 
         <div className="container mx-auto px-4 py-16">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-8">
+          <div className="max-w-3xl">
+            <h2 className="text-3xl font-bold mb-8">
               <SplitText
                 text={faqTitle}
                 className="text-3xl font-bold"

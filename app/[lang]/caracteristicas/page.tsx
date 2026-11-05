@@ -151,7 +151,7 @@ export default async function FeaturesPage({
       <Header lang={lang} dict={dict.nav} />
       <main className="flex-1 pt-24 pb-16">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div className="mb-16 max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               <SplitText
                 text={pageTitle}
@@ -163,7 +163,7 @@ export default async function FeaturesPage({
                 to={{ opacity: 1, y: 0 }}
               />
             </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">{dict.features.description}</p>
+            <p className="text-xl text-muted-foreground max-w-2xl">{dict.features.description}</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
