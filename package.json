@@ -43,7 +43,6 @@
     "@supabase/ssr": "latest",
     "@supabase/supabase-js": "latest",
     "@vercel/analytics": "latest",
-    "@vercel/speed-insights": "2.1.0",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -58,7 +57,6 @@
     "negotiator": "latest",
     "next": "16.0.7",
     "next-themes": "latest",
-    "nuxt": "latest",
     "react": "19.2.0",
     "react-day-picker": "9.8.0",
     "react-dom": "19.2.0",
@@ -71,7 +69,6 @@
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
     "vaul": "^1.1.2",
-    "vue-router": "latest",
     "zod": "3.25.76"
   },
   "devDependencies": {
