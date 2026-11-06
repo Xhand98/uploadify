@@ -1,7 +1,6 @@
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
 import { Features } from "@/components/features";
-import { Stats } from "@/components/stats";
 import { Pricing } from "@/components/pricing";
 import { CTA } from "@/components/cta";
 import { Footer } from "@/components/footer";
@@ -21,7 +20,6 @@ export default async function Home({
       <Header lang={lang} dict={dict.nav} />
       HELLOOOOO
       <Hero dict={dict.hero} lang={lang} />
-      <Stats dict={dict.stats} />
       <Features dict={dict.features} />
       <Pricing dict={dict.pricing} lang={lang} />
       <CTA dict={dict.cta} lang={lang} />

@@ -82,7 +82,7 @@ function AnimatedServiceFlow() {
                       isActive ? step.color : isCompleted ? "text-primary/60" : "text-[#484f58]"
                     }`}>{String(index + 1).padStart(2, "0")}</span>
                     {isActive && (
-                      <span className="absolute inset-0 rounded-2xl animate-ping bg-primary/20 opacity-75"></span>
+                      <span className="absolute inset-0 rounded-2xl bg-primary/20 opacity-75"></span>
                     )}
                   </div>
                   <span
@@ -156,16 +156,6 @@ export function Hero({ dict, lang }: HeroProps) {
     <section className="pt-32 pb-20 px-4">
       <div className="container mx-auto">
         <div className="grid lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] gap-12 items-center">
-          <FadeContent blur duration={600} delay={100}>
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/5 px-4 py-1.5 text-sm font-medium text-primary mb-6">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
-              </span>
-              {dict.badge}
-            </div>
-          </FadeContent>
-
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight mb-6 text-balance">
             <SplitText
               text={dict.title}
@@ -183,7 +173,7 @@ export function Hero({ dict, lang }: HeroProps) {
             <BlurText text={dict.description} delay={150} animateBy="words" direction="top" />
           </div>
 
-          <FadeContent blur duration={800} delay={400}>
+          <FadeContent enabled blur duration={800} delay={400}>
             <div className="flex flex-col sm:flex-row items-start gap-4 mb-12">
               <Button size="lg" className="text-base px-8 group" asChild>
                 <Link href={`/${lang}/solicitar`}>
@@ -197,7 +187,7 @@ export function Hero({ dict, lang }: HeroProps) {
             </div>
           </FadeContent>
 
-          <FadeContent blur duration={800} delay={600}>
+          <FadeContent enabled blur duration={800} delay={600}>
             <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <span className="h-1.5 w-1.5 rounded-full bg-primary" aria-hidden="true" />
@@ -215,7 +205,7 @@ export function Hero({ dict, lang }: HeroProps) {
           </FadeContent>
         </div>
 
-        <FadeContent blur duration={1000} delay={800}>
+        <FadeContent enabled blur duration={1000} delay={800}>
           <div className="lg:mt-0 space-y-8">
             <figure className="overflow-hidden rounded-2xl border border-border/60 bg-card shadow-2xl shadow-primary/5">
               <Image

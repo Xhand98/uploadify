@@ -12,6 +12,7 @@ interface FadeContentProps {
   threshold?: number
   initialOpacity?: number
   className?: string
+  enabled?: boolean
 }
 
 export function FadeContent({
@@ -23,9 +24,14 @@ export function FadeContent({
   threshold = 0.1,
   initialOpacity = 0,
   className = "",
+  enabled = false,
 }: FadeContentProps) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, amount: threshold })
+
+  if (!enabled) {
+    return <div className={className}>{children}</div>
+  }
 
   return (
     <motion.div
